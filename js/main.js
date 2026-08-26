@@ -1,39 +1,67 @@
-const categoriesContainer = document.getElementById("categories");
-const gallery = document.getElementById("gallery");
+const categories = [
+  "all",
+  "people",
+  "animals",
+  "objects",
+  "vehicles",
+  "food",
+  "plants",
+  "architecture"
+];
 
-const overlay = document.getElementById("overlay");
-const modalImage = document.getElementById("modal-image");
-const modalDescription = document.getElementById("modal-description");
-const modalDwg = document.getElementById("modal-dwg");
-const closeButton = document.getElementById("close");
 
-const logo = document.getElementById("logo");
+const categoriesContainer =
+  document.getElementById("categories");
+
+const gallery =
+  document.getElementById("gallery");
+
+const overlay =
+  document.getElementById("overlay");
+
+const modalImage =
+  document.getElementById("modal-image");
+
+const modalDescription =
+  document.getElementById("modal-description");
+
+const modalDwg =
+  document.getElementById("modal-dwg");
+
+const closeButton =
+  document.getElementById("close");
+
+const logo =
+  document.getElementById("logo");
 
 
 /* ================================
-   CATEGORÍAS
+   CREAR CATEGORÍAS
 ================================ */
 
 function createCategories() {
 
-  if (!categoriesContainer) return;
-
   categoriesContainer.innerHTML = "";
 
-  categories.forEach(category => {
+  categories.forEach(function(category) {
 
-    const link = document.createElement("a");
+    const link =
+      document.createElement("a");
 
     link.href = "#";
+
     link.textContent = category;
 
-    link.addEventListener("click", function(event) {
+    link.addEventListener(
+      "click",
+      function(event) {
 
-      event.preventDefault();
+        event.preventDefault();
 
-      showCategory(category);
+        showCategory(category);
 
-    });
+      }
+    );
 
     categoriesContainer.appendChild(link);
 
@@ -43,16 +71,15 @@ function createCategories() {
 
 
 /* ================================
-   GALERÍA
+   MOSTRAR CATEGORÍA
 ================================ */
 
 function showCategory(category) {
 
-  if (!gallery) return;
-
   gallery.innerHTML = "";
 
   let filteredProjects;
+
 
   if (category === "all") {
 
@@ -60,51 +87,62 @@ function showCategory(category) {
 
   } else {
 
-    filteredProjects = projects.filter(
-      project => project.category === category
-    );
+    filteredProjects =
+      projects.filter(function(project) {
+
+        return project.category === category;
+
+      });
 
   }
 
 
-  filteredProjects.forEach(project => {
+  filteredProjects.forEach(
+    function(project) {
 
-    const button = document.createElement("button");
+      const button =
+        document.createElement("button");
 
-    button.className = "project";
-    button.type = "button";
+      button.className = "project";
 
-
-    const image = document.createElement("img");
-
-    image.src = "./images/" + project.image;
-    image.alt = "";
+      button.type = "button";
 
 
-    button.appendChild(image);
+      const image =
+        document.createElement("img");
+
+      image.src =
+        "./images/" + project.image;
+
+      image.alt = "";
 
 
-    button.addEventListener("click", function() {
-
-      openModal(project);
-
-    });
+      button.appendChild(image);
 
 
-    gallery.appendChild(button);
+      button.addEventListener(
+        "click",
+        function() {
 
-  });
+          openModal(project);
+
+        }
+      );
+
+
+      gallery.appendChild(button);
+
+    }
+  );
 
 }
 
 
 /* ================================
-   ABRIR MODAL
+   ABRIR VENTANA
 ================================ */
 
 function openModal(project) {
-
-  if (!overlay) return;
 
   modalImage.src =
     "./images/" + project.image;
@@ -137,12 +175,10 @@ function openModal(project) {
 
 
 /* ================================
-   CERRAR MODAL
+   CERRAR VENTANA
 ================================ */
 
 function closeModal() {
-
-  if (!overlay) return;
 
   overlay.classList.remove("active");
 
@@ -151,32 +187,24 @@ function closeModal() {
 }
 
 
-if (closeButton) {
-
-  closeButton.addEventListener(
-    "click",
-    closeModal
-  );
-
-}
+closeButton.addEventListener(
+  "click",
+  closeModal
+);
 
 
-if (overlay) {
+overlay.addEventListener(
+  "click",
+  function(event) {
 
-  overlay.addEventListener(
-    "click",
-    function(event) {
+    if (event.target === overlay) {
 
-      if (event.target === overlay) {
-
-        closeModal();
-
-      }
+      closeModal();
 
     }
-  );
 
-}
+  }
+);
 
 
 document.addEventListener(
@@ -197,33 +225,25 @@ document.addEventListener(
    LOGO
 ================================ */
 
-if (logo) {
+logo.addEventListener(
+  "click",
+  function(event) {
 
-  logo.addEventListener(
-    "click",
-    function(event) {
+    event.preventDefault();
 
-      event.preventDefault();
+    showCategory("all");
 
-      if (gallery) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
 
-        gallery.innerHTML = "";
-
-      }
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    }
-  );
-
-}
+  }
+);
 
 
 /* ================================
-   INICIAR WEB
+   INICIAR
 ================================ */
 
 createCategories();
