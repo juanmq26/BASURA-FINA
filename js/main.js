@@ -10,58 +10,45 @@ const categories = [
 ];
 
 
-const categoriesContainer =
-  document.getElementById("categories");
+const categoriesContainer = document.getElementById("categories");
+const gallery = document.getElementById("gallery");
 
-const gallery =
-  document.getElementById("gallery");
+const overlay = document.getElementById("overlay");
+const modalImage = document.getElementById("modal-image");
+const modalDescription = document.getElementById("modal-description");
+const modalDwg = document.getElementById("modal-dwg");
 
-const overlay =
-  document.getElementById("overlay");
-
-const modalImage =
-  document.getElementById("modal-image");
-
-const modalDescription =
-  document.getElementById("modal-description");
-
-const modalDwg =
-  document.getElementById("modal-dwg");
-
-const closeButton =
-  document.getElementById("close");
-
-const logo =
-  document.getElementById("logo");
+const closeButton = document.getElementById("close");
+const logo = document.getElementById("logo");
 
 
 /* ================================
-   CREAR CATEGORÍAS
+   CATEGORÍAS
 ================================ */
 
 function createCategories() {
+
+  if (!categoriesContainer) {
+    console.error("No se encuentra #categories");
+    return;
+  }
 
   categoriesContainer.innerHTML = "";
 
   categories.forEach(function(category) {
 
-    const link =
-      document.createElement("a");
+    const link = document.createElement("a");
 
     link.href = "#";
-
     link.textContent = category;
 
-    link.addEventListener(
-      "click",
-      function(event) {
+    link.addEventListener("click", function(event) {
 
-        event.preventDefault();
+      event.preventDefault();
 
-        showCategory(category);
+      showCategory(category);
 
-      }
-    );
+    });
 
     categoriesContainer.appendChild(link);
 
@@ -71,15 +58,19 @@ function createCategories() {
 
 
 /* ================================
-   MOSTRAR CATEGORÍA
+   GALERÍA
 ================================ */
 
 function showCategory(category) {
 
+  if (!gallery) {
+    console.error("No se encuentra #gallery");
+    return;
+  }
+
   gallery.innerHTML = "";
 
-  let filteredProjects;
-
+  let filteredProjects = [];
 
   if (category === "all") {
 
@@ -87,82 +78,87 @@ function showCategory(category) {
 
   } else {
 
-    filteredProjects =
-      projects.filter(function(project) {
+    filteredProjects = projects.filter(function(project) {
 
-        return project.category === category;
+      return project.category === category;
 
-      });
+    });
 
   }
 
 
-  filteredProjects.forEach(
-    function(project) {
+  filteredProjects.forEach(function(project) {
 
-      const button =
-        document.createElement("button");
+    const button = document.createElement("button");
 
-      button.className = "project";
-
-      button.type = "button";
+    button.className = "project";
+    button.type = "button";
 
 
-      const image =
-        document.createElement("img");
+    const image = document.createElement("img");
 
-      image.src =
-        "./images/" + project.image;
+    image.src = "./images/" + project.image;
 
-      image.alt = "";
+    image.alt = "";
 
 
-      button.appendChild(image);
+    button.appendChild(image);
 
 
-      button.addEventListener(
-        "click",
-        function() {
+    button.addEventListener("click", function() {
 
-          openModal(project);
+      openModal(project);
 
-        }
-      );
+    });
 
 
-      gallery.appendChild(button);
+    gallery.appendChild(button);
 
-    }
-  );
+  });
 
 }
 
 
 /* ================================
-   ABRIR VENTANA
+   MODAL
 ================================ */
 
 function openModal(project) {
 
-  modalImage.src =
-    "./images/" + project.image;
+  if (!overlay) return;
 
-  modalDescription.textContent =
-    project.description;
+  if (modalImage) {
+
+    modalImage.src =
+      "./images/" + project.image;
+
+  }
 
 
-  if (project.dwg) {
+  if (modalDescription) {
 
-    modalDwg.href =
-      "./dwg/" + project.dwg;
+    modalDescription.textContent =
+      project.description;
 
-    modalDwg.style.display =
-      "inline-block";
+  }
 
-  } else {
 
-    modalDwg.style.display =
-      "none";
+  if (modalDwg) {
+
+    if (project.dwg) {
+
+      modalDwg.href =
+        "./dwg/" + project.dwg;
+
+      modalDwg.style.display =
+        "inline-block";
+
+    } else {
+
+      modalDwg.style.display =
+        "none";
+
+    }
 
   }
 
@@ -175,10 +171,12 @@ function openModal(project) {
 
 
 /* ================================
-   CERRAR VENTANA
+   CERRAR MODAL
 ================================ */
 
 function closeModal() {
+
+  if (!overlay) return;
 
   overlay.classList.remove("active");
 
@@ -187,24 +185,32 @@ function closeModal() {
 }
 
 
-closeButton.addEventListener(
-  "click",
-  closeModal
-);
+if (closeButton) {
+
+  closeButton.addEventListener(
+    "click",
+    closeModal
+  );
+
+}
 
 
-overlay.addEventListener(
-  "click",
-  function(event) {
+if (overlay) {
 
-    if (event.target === overlay) {
+  overlay.addEventListener(
+    "click",
+    function(event) {
 
-      closeModal();
+      if (event.target === overlay) {
+
+        closeModal();
+
+      }
 
     }
+  );
 
-  }
-);
+}
 
 
 document.addEventListener(
@@ -225,21 +231,25 @@ document.addEventListener(
    LOGO
 ================================ */
 
-logo.addEventListener(
-  "click",
-  function(event) {
+if (logo) {
 
-    event.preventDefault();
+  logo.addEventListener(
+    "click",
+    function(event) {
 
-    showCategory("all");
+      event.preventDefault();
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+      showCategory("all");
 
-  }
-);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+  );
+
+}
 
 
 /* ================================
