@@ -1,55 +1,209 @@
-const projects = document.querySelectorAll(".project");
+const categoriesContainer = document.getElementById("categories");
+const gallery = document.getElementById("gallery");
 
 const overlay = document.getElementById("overlay");
+const modal = document.querySelector(".modal");
+
 const modalImage = document.getElementById("modal-image");
 const modalDescription = document.getElementById("modal-description");
 const modalDwg = document.getElementById("modal-dwg");
+
 const closeButton = document.getElementById("close");
 
+const logo = document.getElementById("logo");
 
-projects.forEach(project => {
 
-  project.addEventListener("click", () => {
+/* --------------------------------------------------
+   CATEGORÍAS
+-------------------------------------------------- */
 
-    const image = project.dataset.image;
-    const description = project.dataset.description;
-    const dwg = project.dataset.dwg;
+function createCategories() {
 
-    modalImage.src = image;
-    modalDescription.textContent = description;
-    modalDwg.href = dwg;
+  categoriesContainer.innerHTML = "";
 
-    overlay.classList.add("active");
+  categories.forEach(category => {
+
+    const link = document.createElement("a");
+
+    link.href = "#";
+
+    link.textContent = category;
+
+    link.addEventListener("click", event => {
+
+      event.preventDefault();
+
+      showCategory(category);
+
+    });
+
+    categoriesContainer.appendChild(link);
 
   });
 
-});
+}
 
 
-closeButton.addEventListener("click", () => {
+/* --------------------------------------------------
+   GALERÍA
+-------------------------------------------------- */
+
+function showCategory(category) {
+
+  gallery.innerHTML = "";
+
+  let filteredProjects;
+
+
+  if (category === "all") {
+
+    filteredProjects = projects;
+
+  } else {
+
+    filteredProjects = projects.filter(
+      project => project.category === category
+    );
+
+  }
+
+
+  filteredProjects.forEach(project => {
+
+    const button = document.createElement("button");
+
+    button.className = "project";
+
+    button.type = "button";
+
+
+    const image = document.createElement("img");
+
+    image.src = "images/" + project.image;
+
+    image.alt = "";
+
+
+    button.appendChild(image);
+
+
+    button.addEventListener("click", () => {
+
+      openModal(project);
+
+    });
+
+
+    gallery.appendChild(button);
+
+  });
+
+}
+
+
+/* --------------------------------------------------
+   MODAL
+-------------------------------------------------- */
+
+function openModal(project) {
+
+  modalImage.src = "images/" + project.image;
+
+  modalDescription.textContent = project.description;
+
+
+  if (project.dwg) {
+
+    modalDwg.href = "dwg/" + project.dwg;
+
+    modalDwg.style.display = "inline-block";
+
+  } else {
+
+    modalDwg.style.display = "none";
+
+  }
+
+
+  overlay.classList.add("active");
+
+  document.body.classList.add("modal-open");
+
+}
+
+
+function closeModal() {
 
   overlay.classList.remove("active");
 
-});
+  document.body.classList.remove("modal-open");
+
+}
 
 
-overlay.addEventListener("click", (event) => {
+/* --------------------------------------------------
+   CERRAR MODAL
+-------------------------------------------------- */
 
-  if (event.target === overlay) {
+closeButton.addEventListener(
+  "click",
+  closeModal
+);
 
-    overlay.classList.remove("active");
+
+overlay.addEventListener(
+  "click",
+  event => {
+
+    if (event.target === overlay) {
+
+      closeModal();
+
+    }
 
   }
+);
 
-});
 
+document.addEventListener(
+  "keydown",
+  event => {
 
-document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
 
-  if (event.key === "Escape") {
+      closeModal();
 
-    overlay.classList.remove("active");
+    }
 
   }
+);
 
-});
+
+/* --------------------------------------------------
+   LOGO
+-------------------------------------------------- */
+
+logo.addEventListener(
+  "click",
+  event => {
+
+    event.preventDefault();
+
+    gallery.innerHTML = "";
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+);
+
+
+/* --------------------------------------------------
+   INICIAR
+-------------------------------------------------- */
+
+createCategories();
+
+showCategory("all");
