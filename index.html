@@ -1,8 +1,67 @@
-<button class="project"
-  data-image="/images/BOLSA_1.png"
-  data-description="Descripción del dibujo 01."
-  data-dwg="#">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <img src="/images/BOLSA_1.png" alt="">
+  <title>BASURA.FINA</title>
 
-</button>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="header">
+
+    <a href="#" class="logo" id="logo">
+      BASURA.FINA
+    </a>
+
+    <nav class="categories" id="categories">
+      <!-- Las categorías se generan automáticamente -->
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <section class="gallery" id="gallery">
+      <!-- Los dibujos se generan automáticamente -->
+    </section>
+
+  </main>
+
+
+  <!-- VENTANA DEL DIBUJO -->
+
+  <div class="overlay" id="overlay">
+
+    <div class="modal">
+
+      <button class="close" id="close" aria-label="Close">
+        ×
+      </button>
+
+      <img id="modal-image" src="" alt="">
+
+      <div class="description" id="modal-description"></div>
+
+      <a
+        id="modal-dwg"
+        href=""
+        download
+        target="_blank">
+        DWG
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
