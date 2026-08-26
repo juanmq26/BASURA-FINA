@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>BASURA.FINA</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
   <header class="header">
 
-    <a href="#" class="logo" id="logo">
+    <a href="./" class="logo">
       BASURA.FINA
     </a>
 
-    <nav class="categories" id="categories">
-      <!-- Las categorías se generan automáticamente -->
+    <nav
+      class="categories"
+      id="categories">
     </nav>
 
   </header>
@@ -26,32 +28,40 @@
 
   <main>
 
-    <section class="gallery" id="gallery">
-      <!-- Los dibujos se generan automáticamente -->
+    <section
+      class="gallery"
+      id="gallery">
     </section>
 
   </main>
 
 
-  <!-- VENTANA DEL DIBUJO -->
-
-  <div class="overlay" id="overlay">
+  <div
+    class="overlay"
+    id="overlay">
 
     <div class="modal">
 
-      <button class="close" id="close" aria-label="Close">
+      <button
+        class="close"
+        id="close">
         ×
       </button>
 
-      <img id="modal-image" src="" alt="">
+      <img
+        id="modal-image"
+        src=""
+        alt="">
 
-      <div class="description" id="modal-description"></div>
+      <div
+        class="description"
+        id="modal-description">
+      </div>
 
       <a
         id="modal-dwg"
         href=""
-        download
-        target="_blank">
+        download>
         DWG
       </a>
 
@@ -60,8 +70,12 @@
   </div>
 
 
-  <script src="js/projects.js"></script>
-  <script src="js/main.js"></script>
+  <!-- IMPORTANTE: primero projects.js -->
+  <script src="./js/projects.js"></script>
+
+  <!-- después main.js -->
+  <script src="./js/main.js"></script>
 
 </body>
+
 </html>
