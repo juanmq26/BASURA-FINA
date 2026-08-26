@@ -1,25 +1,53 @@
+/* --------------------------------------------------
+   BASE
+-------------------------------------------------- */
+
 * {
   box-sizing: border-box;
 }
+
 
 html {
   scroll-behavior: smooth;
 }
 
+
 body {
+
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.2;
+
   background: white;
+
   color: black;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.2;
+
 }
 
 
-/* HEADER */
+button,
+a {
+
+  font: inherit;
+
+}
+
+
+/* --------------------------------------------------
+   HEADER
+-------------------------------------------------- */
 
 .header {
+
   position: fixed;
+
   top: 0;
   left: 0;
 
@@ -28,84 +56,114 @@ body {
   padding: 20px;
 
   z-index: 10;
+
 }
 
+
 .logo {
+
   position: absolute;
 
   left: 50%;
+
   transform: translateX(-50%);
 
   color: black;
+
   text-decoration: none;
+
 }
+
 
 .categories {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 2px;
+
 }
+
 
 .categories a {
+
   color: black;
+
   text-decoration: none;
+
 }
+
 
 .categories a:hover {
+
   text-decoration: underline;
+
 }
 
 
-/* CATEGORÍAS */
+/* --------------------------------------------------
+   GALERÍA
+-------------------------------------------------- */
 
-.category {
-  min-height: 100vh;
+.gallery {
 
   padding: 120px 20px 20px;
-}
 
-
-/* GRID */
-
-.grid {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3, 1fr);
 
   gap: 10px;
+
 }
 
 
-/* DIBUJOS */
-
 .project {
+
   appearance: none;
 
   border: 0;
+
   padding: 0;
+
+  margin: 0;
 
   background: transparent;
 
   cursor: pointer;
+
 }
 
+
 .project img {
+
   display: block;
 
   width: 100%;
+
   height: auto;
 
-  transition: transform 0.25s ease;
+  transition:
+    transform 0.25s ease;
+
 }
+
 
 .project:hover img {
+
   transform: scale(1.02);
+
 }
 
 
-/* OVERLAY */
+/* --------------------------------------------------
+   MODAL
+-------------------------------------------------- */
 
 .overlay {
+
   position: fixed;
 
   inset: 0;
@@ -115,78 +173,128 @@ body {
   display: none;
 
   align-items: center;
+
   justify-content: center;
 
   padding: 40px;
 
-  background: rgba(255,255,255,0.55);
+  background:
+    rgba(255,255,255,0.45);
 
-  backdrop-filter: blur(12px);
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
 }
+
 
 .overlay.active {
+
   display: flex;
+
 }
 
-
-/* MODAL */
 
 .modal {
+
   position: relative;
 
-  width: min(700px, 90vw);
+  width: min(
+    700px,
+    90vw
+  );
 
   background: white;
+
 }
 
+
 .modal img {
+
   display: block;
 
   width: 100%;
+
+  height: auto;
+
 }
+
 
 .description {
+
   padding-top: 10px;
+
 }
 
+
 #modal-dwg {
+
   display: inline-block;
 
   margin-top: 10px;
 
   color: black;
+
 }
 
 
-/* CERRAR */
-
 .close {
+
   position: absolute;
 
   top: -30px;
+
   right: 0;
 
   border: 0;
 
   background: none;
 
+  color: black;
+
   font-size: 24px;
 
+  line-height: 1;
+
   cursor: pointer;
+
 }
 
 
-/* MÓVIL */
+body.modal-open {
 
-@media (max-width: 700px) {
+  overflow: hidden;
 
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+}
+
+
+/* --------------------------------------------------
+   MÓVIL
+-------------------------------------------------- */
+
+@media (
+  max-width: 700px
+) {
+
+  .header {
+
+    padding: 15px;
+
   }
 
-  .category {
-    padding-left: 10px;
-    padding-right: 10px;
+
+  .gallery {
+
+    padding:
+      100px 10px 10px;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 6px;
+
   }
 
 }
