@@ -2,22 +2,21 @@ const categoriesContainer = document.getElementById("categories");
 const gallery = document.getElementById("gallery");
 
 const overlay = document.getElementById("overlay");
-const modal = document.querySelector(".modal");
-
 const modalImage = document.getElementById("modal-image");
 const modalDescription = document.getElementById("modal-description");
 const modalDwg = document.getElementById("modal-dwg");
-
 const closeButton = document.getElementById("close");
 
 const logo = document.getElementById("logo");
 
 
-/* --------------------------------------------------
+/* ================================
    CATEGORÍAS
--------------------------------------------------- */
+================================ */
 
 function createCategories() {
+
+  if (!categoriesContainer) return;
 
   categoriesContainer.innerHTML = "";
 
@@ -26,10 +25,9 @@ function createCategories() {
     const link = document.createElement("a");
 
     link.href = "#";
-
     link.textContent = category;
 
-    link.addEventListener("click", event => {
+    link.addEventListener("click", function(event) {
 
       event.preventDefault();
 
@@ -44,16 +42,17 @@ function createCategories() {
 }
 
 
-/* --------------------------------------------------
+/* ================================
    GALERÍA
--------------------------------------------------- */
+================================ */
 
 function showCategory(category) {
+
+  if (!gallery) return;
 
   gallery.innerHTML = "";
 
   let filteredProjects;
-
 
   if (category === "all") {
 
@@ -73,21 +72,19 @@ function showCategory(category) {
     const button = document.createElement("button");
 
     button.className = "project";
-
     button.type = "button";
 
 
     const image = document.createElement("img");
 
-    image.src = "images/" + project.image;
-
+    image.src = "./images/" + project.image;
     image.alt = "";
 
 
     button.appendChild(image);
 
 
-    button.addEventListener("click", () => {
+    button.addEventListener("click", function() {
 
       openModal(project);
 
@@ -101,26 +98,33 @@ function showCategory(category) {
 }
 
 
-/* --------------------------------------------------
-   MODAL
--------------------------------------------------- */
+/* ================================
+   ABRIR MODAL
+================================ */
 
 function openModal(project) {
 
-  modalImage.src = "images/" + project.image;
+  if (!overlay) return;
 
-  modalDescription.textContent = project.description;
+  modalImage.src =
+    "./images/" + project.image;
+
+  modalDescription.textContent =
+    project.description;
 
 
   if (project.dwg) {
 
-    modalDwg.href = "dwg/" + project.dwg;
+    modalDwg.href =
+      "./dwg/" + project.dwg;
 
-    modalDwg.style.display = "inline-block";
+    modalDwg.style.display =
+      "inline-block";
 
   } else {
 
-    modalDwg.style.display = "none";
+    modalDwg.style.display =
+      "none";
 
   }
 
@@ -132,7 +136,13 @@ function openModal(project) {
 }
 
 
+/* ================================
+   CERRAR MODAL
+================================ */
+
 function closeModal() {
+
+  if (!overlay) return;
 
   overlay.classList.remove("active");
 
@@ -141,33 +151,37 @@ function closeModal() {
 }
 
 
-/* --------------------------------------------------
-   CERRAR MODAL
--------------------------------------------------- */
+if (closeButton) {
 
-closeButton.addEventListener(
-  "click",
-  closeModal
-);
+  closeButton.addEventListener(
+    "click",
+    closeModal
+  );
+
+}
 
 
-overlay.addEventListener(
-  "click",
-  event => {
+if (overlay) {
 
-    if (event.target === overlay) {
+  overlay.addEventListener(
+    "click",
+    function(event) {
 
-      closeModal();
+      if (event.target === overlay) {
+
+        closeModal();
+
+      }
 
     }
+  );
 
-  }
-);
+}
 
 
 document.addEventListener(
   "keydown",
-  event => {
+  function(event) {
 
     if (event.key === "Escape") {
 
@@ -179,30 +193,38 @@ document.addEventListener(
 );
 
 
-/* --------------------------------------------------
+/* ================================
    LOGO
--------------------------------------------------- */
+================================ */
 
-logo.addEventListener(
-  "click",
-  event => {
+if (logo) {
 
-    event.preventDefault();
+  logo.addEventListener(
+    "click",
+    function(event) {
 
-    gallery.innerHTML = "";
+      event.preventDefault();
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+      if (gallery) {
 
-  }
-);
+        gallery.innerHTML = "";
+
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+  );
+
+}
 
 
-/* --------------------------------------------------
-   INICIAR
--------------------------------------------------- */
+/* ================================
+   INICIAR WEB
+================================ */
 
 createCategories();
 
