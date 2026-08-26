@@ -1,15 +1,3 @@
-const categories = [
-  "all",
-  "people",
-  "animals",
-  "objects",
-  "vehicles",
-  "food",
-  "plants",
-  "architecture"
-];
-
-
 const projects = [
 
   {
