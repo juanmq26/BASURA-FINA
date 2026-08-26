@@ -3,14 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juan Múzquiz — Arquitectura</title>
+
+  <title>BASURA.FINA</title>
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <h1>Juan Múzquiz</h1>
+  <!-- CABECERA -->
+  <header class="header">
 
-  <p>Arquitectura</p>
+    <a href="/" class="logo">
+      BASURA.FINA
+    </a>
+
+    <nav class="categories">
+      <a href="#categoria-1">CATEGORÍA 01</a>
+      <a href="#categoria-2">CATEGORÍA 02</a>
+      <a href="#categoria-3">CATEGORÍA 03</a>
+    </nav>
+
+  </header>
+
+
+  <!-- CONTENIDO -->
+  <main>
+
+    <section id="categoria-1" class="category">
+
+      <div class="grid">
+
+        <button class="project"
+          data-image="images/placeholder-01.jpg"
+          data-description="Descripción del dibujo 01."
+          data-dwg="dwg/dibujo-01.dwg">
+
+          <img src="images/placeholder-01.jpg" alt="">
+        </button>
+
+        <button class="project"
+          data-image="images/placeholder-02.jpg"
+          data-description="Descripción del dibujo 02."
+          data-dwg="dwg/dibujo-02.dwg">
+
+          <img src="images/placeholder-02.jpg" alt="">
+        </button>
+
+        <button class="project"
+          data-image="images/placeholder-03.jpg"
+          data-description="Descripción del dibujo 03."
+          data-dwg="dwg/dibujo-03.dwg">
+
+          <img src="images/placeholder-03.jpg" alt="">
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <section id="categoria-2" class="category">
+
+      <div class="grid">
+
+        <!-- AQUÍ IRÁN LOS DIBUJOS DE LA CATEGORÍA 2 -->
+
+      </div>
+
+    </section>
+
+
+    <section id="categoria-3" class="category">
+
+      <div class="grid">
+
+        <!-- AQUÍ IRÁN LOS DIBUJOS DE LA CATEGORÍA 3 -->
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- VENTANA DEL DIBUJO -->
+  <div class="overlay" id="overlay">
+
+    <div class="modal">
+
+      <button class="close" id="close">
+        ×
+      </button>
+
+      <img id="modal-image" src="" alt="">
+
+      <div class="description" id="modal-description"></div>
+
+      <a id="modal-dwg" href="" download>
+        DWG
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <script src="js/main.js"></script>
 
 </body>
 </html>
