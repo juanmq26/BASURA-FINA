@@ -47,11 +47,8 @@ if (logo) {
         event.preventDefault();
 
         window.scrollTo({
-
             top: 0,
-
             behavior: "smooth"
-
         });
 
     });
@@ -73,13 +70,13 @@ const bagImage =
 
 const bags = [
 
-    "./images/bag-01.png",
+    "./images/bag1.png",
 
-    "./images/bag-02.png",
+    "./images/bag2.png",
 
-    "./images/bag-03.png",
+    "./images/bag3.png",
 
-    "./images/bag-04.png"
+    "./images/bag4.png"
 
 ];
 
@@ -88,7 +85,7 @@ let currentBag = 0;
 
 
 /* =========================================
-   PRE-CARGAR LAS IMÁGENES
+   PRE-CARGAR IMÁGENES
 ========================================= */
 
 bags.forEach(function(src) {
@@ -102,7 +99,7 @@ bags.forEach(function(src) {
 
 
 /* =========================================
-   CAMBIAR BOLSA AL HACER CLICK
+   CLICK EN LA BOLSA
 ========================================= */
 
 if (centralImage && bagImage) {
@@ -116,9 +113,7 @@ if (centralImage && bagImage) {
 
             currentBag++;
 
-            if (
-                currentBag >= bags.length
-            ) {
+            if (currentBag >= bags.length) {
 
                 currentBag = 0;
 
