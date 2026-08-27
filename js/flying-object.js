@@ -39,7 +39,9 @@
 
         /*
          * IZQUIERDA → DERECHA
-         * ESPEJO
+         *
+         * La abeja mira hacia la derecha.
+         * ESPEJO.
          */
 
         if (direction === 0) {
@@ -57,7 +59,9 @@
 
         /*
          * DERECHA → IZQUIERDA
-         * NORMAL
+         *
+         * La abeja mira hacia la izquierda.
+         * IMAGEN NORMAL.
          */
 
         else if (direction === 1) {
