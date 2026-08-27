@@ -1,6 +1,7 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -73,17 +74,18 @@
 
 
         <!-- =================================
-             BOLSA
+             BOLSA INTERACTIVA
         ================================== -->
 
         <div
             class="central-image"
             id="bag-container"
+            onclick="nextBag()"
         >
 
             <img
                 id="bag-image"
-                src="https://basura-fina.juanmq26.workers.dev/images/bag1.png"
+                src="./images/bag1.png"
                 alt="Basurafina bag"
             >
 
@@ -112,7 +114,6 @@
 
                 <br>
 
-
                 <span class="green-highlight">
                     “No”
                 </span>
@@ -120,7 +121,6 @@
                 is OK. It’s rhetorical;
 
                 <br>
-
 
                 everybody speaks
 
@@ -177,11 +177,48 @@
     </main>
 
 
-    <script src="./js/projects.js"></script>
+    <!-- =====================================
+         BOLSA — JAVASCRIPT
+    ====================================== -->
 
-    <script src="./js/main.js"></script>
+    <script>
+
+        const bags = [
+            "./images/bag1.png",
+            "./images/bag2.png",
+            "./images/bag3.png",
+            "./images/bag4.png"
+        ];
+
+
+        let currentBag = 0;
+
+
+        function nextBag() {
+
+            currentBag = currentBag + 1;
+
+
+            if (currentBag >= bags.length) {
+
+                currentBag = 0;
+
+            }
+
+
+            const image =
+                document.getElementById("bag-image");
+
+
+            image.src =
+                bags[currentBag];
+
+        }
+
+    </script>
 
 
 </body>
+
 </html>
 ```
