@@ -23,14 +23,20 @@
         const width = window.innerWidth;
         const height = window.innerHeight;
 
+        /*
+         * Margen suficiente para que la abeja
+         * quede completamente fuera de la pantalla
+         * al empezar y terminar.
+         */
         const beeSize = 90;
+        const margin = beeSize * 2;
+
 
         /*
          * Elegimos aleatoriamente uno de los cuatro
          * sentidos principales.
          *
-         * A diferencia de Cargo, todos tienen componente
-         * diagonal.
+         * Todos los vuelos tienen componente diagonal.
          */
 
         const direction = Math.floor(random(0, 4));
@@ -41,84 +47,93 @@
         let endY;
 
 
-        // IZQUIERDA → DERECHA
+        /*
+         * IZQUIERDA → DERECHA
+         */
 
         if (direction === 0) {
 
-            startX = -beeSize;
-            startY = random(0, height * 0.8);
+            startX = -margin;
+            startY = random(0, height);
 
-            endX = width + beeSize;
-            endY = startY + random(-height * 0.45, height * 0.45);
+            endX = width + margin;
+            endY = random(0, height);
 
         }
 
 
-        // DERECHA → IZQUIERDA
+        /*
+         * DERECHA → IZQUIERDA
+         */
 
         else if (direction === 1) {
 
-            startX = width + beeSize;
-            startY = random(0, height * 0.8);
+            startX = width + margin;
+            startY = random(0, height);
 
-            endX = -beeSize;
-            endY = startY + random(-height * 0.45, height * 0.45);
+            endX = -margin;
+            endY = random(0, height);
 
         }
 
 
-        // ARRIBA → ABAJO
+        /*
+         * ARRIBA → ABAJO
+         */
 
         else if (direction === 2) {
 
-            startX = random(0, width * 0.8);
-            startY = -beeSize;
+            startX = random(0, width);
+            startY = -margin;
 
-            endX = startX + random(-width * 0.45, width * 0.45);
-            endY = height + beeSize;
+            endX = random(0, width);
+            endY = height + margin;
 
         }
 
 
-        // ABAJO → ARRIBA
+        /*
+         * ABAJO → ARRIBA
+         */
 
         else {
 
-            startX = random(0, width * 0.8);
-            startY = height + beeSize;
+            startX = random(0, width);
+            startY = height + margin;
 
-            endX = startX + random(-width * 0.45, width * 0.45);
-            endY = -beeSize;
+            endX = random(0, width);
+            endY = -margin;
 
         }
 
 
         /*
-         * Ángulo de la trayectoria.
+         * ORIENTACIÓN FIJA
+         *
+         * La abeja NO gira siguiendo la trayectoria.
+         *
+         * 0   = orientación original
+         * 90  = giro 90º
+         * 180 = giro 180º
+         * 270 = giro 270º
          */
 
-        const angle =
-            Math.atan2(endY - startY, endX - startX)
-            * 180 / Math.PI;
+        const fixedRotation = 90;
 
 
         /*
-         * Duración.
+         * Duración del vuelo.
          *
-         * Cuanto menor sea el número,
-         * más rápida será la abeja.
+         * Menor número = más rápida.
          */
 
         const duration = random(7, 12);
 
 
         /*
-         * Rotación muy pequeña de la abeja.
-         * No queremos que parezca que está girando.
+         * Colocamos la abeja en el punto inicial
+         * sin transición.
          */
-
-        const fixedRotation = 0;
-
 
         bee.style.transition = 'none';
 
@@ -134,6 +149,10 @@
         bee.offsetHeight;
 
 
+        /*
+         * Comienza el vuelo.
+         */
+
         bee.style.transition =
             `transform ${duration}s linear`;
 
@@ -142,29 +161,57 @@
 
 
         /*
-         * Cuando termina, esperamos un poco
-         * y volvemos a lanzar otra.
+         * Esperamos al final REAL de la transición.
+         *
+         * Esto es más fiable que usar un setTimeout
+         * exactamente igual a la duración.
          */
 
-        setTimeout(() => {
+        const onTransitionEnd = (event) => {
+
+            if (event.propertyName !== 'transform') return;
+
+
+            bee.removeEventListener(
+                'transitionend',
+                onTransitionEnd
+            );
+
+
+            /*
+             * Pausa aleatoria antes del siguiente vuelo.
+             */
 
             bee.style.transition = 'none';
 
             setTimeout(() => {
+
                 flyBee();
+
             }, random(1500, 5000));
 
-        }, duration * 1000);
+        };
+
+
+        bee.addEventListener(
+            'transitionend',
+            onTransitionEnd
+        );
 
     }
 
 
     /*
      * Primer vuelo.
+     *
+     * Esperamos 2 segundos antes de que
+     * aparezca la primera abeja.
      */
 
     setTimeout(() => {
+
         flyBee();
+
     }, 2000);
 
 
