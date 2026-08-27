@@ -236,13 +236,13 @@ body {
 
     font-style: normal;
 
-    font-weight: 600;
+    font-weight: 575;
 
-    font-size: 44px;
+    font-size: 46px;
 
-    line-height: 1.1;
+    line-height: 1.05;
 
-    letter-spacing: 0;
+    letter-spacing: -0.2px;
 }
 
 .manifesto em {
@@ -372,7 +372,7 @@ body {
     .manifesto h1 {
         font-size: 3rem;
 
-        line-height: 1.1;
+        line-height: 1.05;
     }
 
     .categories {
@@ -460,7 +460,7 @@ body {
     .manifesto h1 {
         font-size: 2rem;
 
-        line-height: 1.1;
+        line-height: 1.05;
     }
 
     .categories {
