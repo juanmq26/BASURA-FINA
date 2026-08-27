@@ -208,11 +208,11 @@ body {
 
     left: 50%;
 
-    top: 8%;
+    top: 7%;
 
     transform: translateX(-50%);
 
-    width: 320px;
+    width: 340px;
 
     display: flex;
 
@@ -242,7 +242,7 @@ body {
 
     left: 50%;
 
-    top: 70%;
+    top: 68%;
 
     transform: translateX(-50%);
 
