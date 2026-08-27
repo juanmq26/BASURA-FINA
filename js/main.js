@@ -1,16 +1,17 @@
+```js
 /* =========================================
    BASURAFINA
    HOME
 ========================================= */
 
 
-const categoryLinks =
-    document.querySelectorAll(".categories a");
-
-
 /* =========================================
    CATEGORÍAS
 ========================================= */
+
+const categoryLinks =
+    document.querySelectorAll(".categories a");
+
 
 categoryLinks.forEach(function(link) {
 
@@ -53,3 +54,50 @@ if (logo) {
     });
 
 }
+
+
+/* =========================================
+   BOLSA CENTRAL
+========================================= */
+
+const centralImage =
+    document.querySelector(".central-image img");
+
+
+const bags = [
+    "./images/BOLSA_1.png",
+    "./images/BOLSA_2.png",
+    "./images/BOLSA_3.png",
+    "./images/BOLSA_4.png"
+];
+
+
+let currentBag = 0;
+
+
+if (centralImage) {
+
+    centralImage.style.cursor = "pointer";
+
+    centralImage.addEventListener("click", function() {
+
+        currentBag++;
+
+        if (currentBag >= bags.length) {
+            currentBag = 0;
+        }
+
+        centralImage.style.opacity = "0";
+
+        setTimeout(function() {
+
+            centralImage.src = bags[currentBag];
+
+            centralImage.style.opacity = "1";
+
+        }, 120);
+
+    });
+
+}
+```
