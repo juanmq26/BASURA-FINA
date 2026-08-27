@@ -28,30 +28,21 @@
 ========================================= */
 
 * {
-
     box-sizing: border-box;
-
 }
 
 
 html,
 body {
-
     margin: 0;
-
     padding: 0;
-
     width: 100%;
-
     min-height: 100%;
-
 }
 
 
 body {
-
     background: #ffffff;
-
     color: #171f5d;
 
     font-family:
@@ -61,7 +52,6 @@ body {
         sans-serif;
 
     overflow-x: hidden;
-
 }
 
 
@@ -74,7 +64,6 @@ body {
     position: absolute;
 
     top: 0;
-
     left: 0;
 
     width: 100%;
@@ -84,11 +73,9 @@ body {
     display: flex;
 
     justify-content: space-between;
-
     align-items: flex-start;
 
     z-index: 20;
-
 }
 
 
@@ -109,6 +96,7 @@ body {
     font-family:
         "Neue Haas Grotesk",
         Arial,
+        Helvetica,
         sans-serif;
 
     font-size: 29px;
@@ -118,7 +106,6 @@ body {
     font-weight: 500;
 
     letter-spacing: 0;
-
 }
 
 
@@ -131,7 +118,6 @@ body {
     position: relative;
 
     top: -3px;
-
 }
 
 
@@ -150,7 +136,6 @@ body {
     transform: rotate(-15deg);
 
     font-weight: 500;
-
 }
 
 
@@ -169,6 +154,7 @@ body {
     font-family:
         "Neue Haas Grotesk",
         Arial,
+        Helvetica,
         sans-serif;
 
     font-size: 29px;
@@ -178,7 +164,6 @@ body {
     font-weight: 500;
 
     letter-spacing: 0;
-
 }
 
 
@@ -189,21 +174,18 @@ body {
     text-decoration: none;
 
     white-space: nowrap;
-
 }
 
 
 .top-navigation a:hover {
 
     text-decoration: underline;
-
 }
 
 
 .top-navigation .subscribe {
 
     color: #ef73b6;
-
 }
 
 
@@ -220,7 +202,6 @@ body {
     width: 100%;
 
     padding-top: 1px;
-
 }
 
 
@@ -247,7 +228,6 @@ body {
     align-items: center;
 
     cursor: pointer;
-
 }
 
 
@@ -260,7 +240,6 @@ body {
     height: auto;
 
     object-fit: contain;
-
 }
 
 
@@ -281,7 +260,6 @@ body {
     width: min(900px, 90vw);
 
     text-align: center;
-
 }
 
 
@@ -303,19 +281,17 @@ body {
 
     font-weight: 500;
 
-    font-size: 4rem;
+    font-size: 45px;
 
-    line-height: 1.1;
+    line-height: 1.08;
 
-    letter-spacing: 0em;
-
+    letter-spacing: -0.4px;
 }
 
 
 .manifesto em {
 
     font-style: italic;
-
 }
 
 
@@ -332,7 +308,6 @@ body {
     color: #ffffff;
 
     padding: 0 4px;
-
 }
 
 
@@ -341,14 +316,12 @@ body {
     color: #ffffff;
 
     text-decoration: none;
-
 }
 
 
 .asterisk {
 
     color: #ffffff;
-
 }
 
 
@@ -363,7 +336,6 @@ body {
     background: rgba(103, 182, 86, 0.5);
 
     padding: 0 3px;
-
 }
 
 
@@ -393,7 +365,6 @@ body {
     text-align: center;
 
     column-gap: 20px;
-
 }
 
 
@@ -418,21 +389,18 @@ body {
     text-decoration: underline;
 
     white-space: nowrap;
-
 }
 
 
 .categories a.active {
 
     text-decoration: none;
-
 }
 
 
 .categories a:hover {
 
     text-decoration: none;
-
 }
 
 
@@ -442,11 +410,9 @@ body {
 
 @media (max-width: 1000px) {
 
-
     .top-bar {
 
         padding: 22px 25px;
-
     }
 
 
@@ -455,35 +421,30 @@ body {
         gap: 28px;
 
         font-size: 24px;
-
     }
 
 
     .logo {
 
         font-size: 25px;
-
     }
 
 
     .central-image {
 
         width: 155px;
-
     }
 
 
     .manifesto {
 
         width: 90vw;
-
     }
 
 
     .manifesto h1 {
 
         font-size: 3rem;
-
     }
 
 
@@ -492,14 +453,12 @@ body {
         padding: 0 20px;
 
         column-gap: 8px;
-
     }
 
 
     .categories a {
 
         font-size: 21px;
-
     }
 
 }
@@ -511,7 +470,6 @@ body {
 
 @media (max-width: 700px) {
 
-
     .top-bar {
 
         position: relative;
@@ -521,7 +479,6 @@ body {
         flex-direction: column;
 
         gap: 25px;
-
     }
 
 
@@ -536,14 +493,12 @@ body {
         font-size: 18px;
 
         letter-spacing: 0;
-
     }
 
 
     .logo {
 
         font-size: 24px;
-
     }
 
 
@@ -552,14 +507,12 @@ body {
         margin-left: 80px;
 
         font-size: 30px;
-
     }
 
 
     .home {
 
         min-height: calc(100vh - 100px);
-
     }
 
 
@@ -576,7 +529,6 @@ body {
         margin: 70px auto 0;
 
         width: 125px;
-
     }
 
 
@@ -593,7 +545,6 @@ body {
         width: calc(100% - 30px);
 
         margin: 80px auto 0;
-
     }
 
 
@@ -602,7 +553,6 @@ body {
         font-size: 2rem;
 
         line-height: 1.1;
-
     }
 
 
@@ -620,14 +570,12 @@ body {
             repeat(2, 1fr);
 
         row-gap: 15px;
-
     }
 
 
     .categories a {
 
         font-size: 22px;
-
     }
 
 }
