@@ -5,20 +5,30 @@
 
 
 /* =========================================
-   FUENTE
+   FUENTES
 ========================================= */
 
 @font-face {
-
     font-family: "Neue Haas Grotesk";
-
-    src: url("../fonts/NeueHaasDisplayMediu.woff2")
-         format("woff2");
-
+    src: url("../fonts/NeueHaasDisplayRoman.woff2") format("woff2");
     font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
 
+@font-face {
+    font-family: "Neue Haas Grotesk";
+    src: url("../fonts/NeueHaasDisplayMediu.woff2") format("woff2");
+    font-style: normal;
     font-weight: 500;
+    font-display: swap;
+}
 
+@font-face {
+    font-family: "Neue Haas Grotesk";
+    src: url("../fonts/NeueHaasDisplayBold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 700;
     font-display: swap;
 }
 
@@ -31,7 +41,6 @@
     box-sizing: border-box;
 }
 
-
 html,
 body {
     margin: 0;
@@ -39,7 +48,6 @@ body {
     width: 100%;
     min-height: 100%;
 }
-
 
 body {
     background: #ffffff;
@@ -60,7 +68,6 @@ body {
 ========================================= */
 
 .top-bar {
-
     position: absolute;
 
     top: 0;
@@ -71,7 +78,6 @@ body {
     padding: 25px 34px;
 
     display: flex;
-
     justify-content: space-between;
     align-items: flex-start;
 
@@ -84,9 +90,7 @@ body {
 ========================================= */
 
 .logo {
-
     display: flex;
-
     flex-direction: column;
 
     color: #171f5d;
@@ -108,9 +112,7 @@ body {
     letter-spacing: 0;
 }
 
-
 .logo sup {
-
     font-size: 13px;
 
     vertical-align: top;
@@ -120,9 +122,7 @@ body {
     top: -3px;
 }
 
-
 .logo-doodle {
-
     display: block;
 
     margin-top: 3px;
@@ -144,7 +144,6 @@ body {
 ========================================= */
 
 .top-navigation {
-
     display: flex;
 
     align-items: center;
@@ -166,9 +165,7 @@ body {
     letter-spacing: 0;
 }
 
-
 .top-navigation a {
-
     color: #171f5d;
 
     text-decoration: none;
@@ -176,15 +173,11 @@ body {
     white-space: nowrap;
 }
 
-
 .top-navigation a:hover {
-
     text-decoration: underline;
 }
 
-
 .top-navigation .subscribe {
-
     color: #ef73b6;
 }
 
@@ -194,7 +187,6 @@ body {
 ========================================= */
 
 .home {
-
     position: relative;
 
     min-height: 100vh;
@@ -210,7 +202,6 @@ body {
 ========================================= */
 
 .central-image {
-
     position: absolute;
 
     left: 50%;
@@ -224,15 +215,12 @@ body {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     cursor: pointer;
 }
 
-
 .central-image img {
-
     display: block;
 
     width: 100%;
@@ -248,12 +236,11 @@ body {
 ========================================= */
 
 .manifesto {
-
     position: absolute;
 
     left: 50%;
 
-    top: 60.5%;
+    top: 63%;
 
     transform: translateX(-50%);
 
@@ -262,9 +249,7 @@ body {
     text-align: center;
 }
 
-
 .manifesto h1 {
-
     margin: 0;
 
     padding: 0;
@@ -279,7 +264,7 @@ body {
 
     font-style: normal;
 
-    font-weight: 500;
+    font-weight: 700;
 
     font-size: 45px;
 
@@ -288,9 +273,7 @@ body {
     letter-spacing: -0.4px;
 }
 
-
 .manifesto em {
-
     font-style: italic;
 }
 
@@ -300,7 +283,6 @@ body {
 ========================================= */
 
 .blue-highlight {
-
     display: inline;
 
     background: #171f5d;
@@ -310,17 +292,13 @@ body {
     padding: 0 4px;
 }
 
-
 .blue-highlight a {
-
     color: #ffffff;
 
     text-decoration: none;
 }
 
-
 .asterisk {
-
     color: #ffffff;
 }
 
@@ -330,7 +308,6 @@ body {
 ========================================= */
 
 .green-highlight {
-
     display: inline;
 
     background: rgba(103, 182, 86, 0.5);
@@ -344,7 +321,6 @@ body {
 ========================================= */
 
 .categories {
-
     position: absolute;
 
     left: 0;
@@ -367,9 +343,7 @@ body {
     column-gap: 20px;
 }
 
-
 .categories a {
-
     color: #171f5d;
 
     font-family:
@@ -391,15 +365,11 @@ body {
     white-space: nowrap;
 }
 
-
 .categories a.active {
-
     text-decoration: none;
 }
 
-
 .categories a:hover {
-
     text-decoration: none;
 }
 
@@ -411,56 +381,40 @@ body {
 @media (max-width: 1000px) {
 
     .top-bar {
-
         padding: 22px 25px;
     }
 
-
     .top-navigation {
-
         gap: 28px;
 
         font-size: 24px;
     }
 
-
     .logo {
-
         font-size: 25px;
     }
 
-
     .central-image {
-
-        width: 155px;
+        width: 280px;
     }
 
-
     .manifesto {
-
         width: 90vw;
     }
 
-
     .manifesto h1 {
-
         font-size: 3rem;
     }
 
-
     .categories {
-
         padding: 0 20px;
 
         column-gap: 8px;
     }
 
-
     .categories a {
-
         font-size: 21px;
     }
-
 }
 
 
@@ -471,7 +425,6 @@ body {
 @media (max-width: 700px) {
 
     .top-bar {
-
         position: relative;
 
         padding: 18px;
@@ -481,9 +434,7 @@ body {
         gap: 25px;
     }
 
-
     .top-navigation {
-
         width: 100%;
 
         justify-content: space-between;
@@ -495,29 +446,21 @@ body {
         letter-spacing: 0;
     }
 
-
     .logo {
-
         font-size: 24px;
     }
 
-
     .logo-doodle {
-
         margin-left: 80px;
 
         font-size: 30px;
     }
 
-
     .home {
-
         min-height: calc(100vh - 100px);
     }
 
-
     .central-image {
-
         position: relative;
 
         top: auto;
@@ -531,9 +474,7 @@ body {
         width: 125px;
     }
 
-
     .manifesto {
-
         position: relative;
 
         top: auto;
@@ -547,17 +488,13 @@ body {
         margin: 80px auto 0;
     }
 
-
     .manifesto h1 {
-
         font-size: 2rem;
 
         line-height: 1.1;
     }
 
-
     .categories {
-
         position: relative;
 
         bottom: auto;
@@ -572,9 +509,7 @@ body {
         row-gap: 15px;
     }
 
-
     .categories a {
-
         font-size: 22px;
     }
 
