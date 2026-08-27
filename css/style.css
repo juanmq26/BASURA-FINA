@@ -1,4 +1,3 @@
-```css
 /* =========================================
    BASURAFINA
    HOME
@@ -13,12 +12,12 @@
 
     font-family: "Neue Haas Grotesk";
 
-    src:
-        url("../fonts/NeueHaasDisplayMediu.woff2")
+    src: url("../fonts/NeueHaasDisplayMediu.woff2")
         format("woff2");
 
-    font-weight: 500;
     font-style: normal;
+
+    font-weight: 500;
 
     font-display: swap;
 }
@@ -29,7 +28,9 @@
 ========================================= */
 
 * {
+
     box-sizing: border-box;
+
 }
 
 
@@ -37,9 +38,11 @@ html,
 body {
 
     margin: 0;
+
     padding: 0;
 
     width: 100%;
+
     min-height: 100%;
 
 }
@@ -53,6 +56,8 @@ body {
 
     font-family:
         "Neue Haas Grotesk",
+        Arial,
+        Helvetica,
         sans-serif;
 
     overflow-x: hidden;
@@ -69,6 +74,7 @@ body {
     position: absolute;
 
     top: 0;
+
     left: 0;
 
     width: 100%;
@@ -100,13 +106,18 @@ body {
 
     text-decoration: none;
 
+    font-family:
+        "Neue Haas Grotesk",
+        Arial,
+        sans-serif;
+
     font-size: 29px;
 
     line-height: 0.9;
 
     font-weight: 500;
 
-    letter-spacing: -1.5px;
+    letter-spacing: 0;
 
 }
 
@@ -138,13 +149,13 @@ body {
 
     transform: rotate(-15deg);
 
-    font-weight: 400;
+    font-weight: 500;
 
 }
 
 
 /* =========================================
-   NAVEGACIÓN SUPERIOR
+   MENÚ SUPERIOR
 ========================================= */
 
 .top-navigation {
@@ -153,7 +164,12 @@ body {
 
     align-items: center;
 
-    gap: 45px;
+    gap: 42px;
+
+    font-family:
+        "Neue Haas Grotesk",
+        Arial,
+        sans-serif;
 
     font-size: 29px;
 
@@ -161,9 +177,7 @@ body {
 
     font-weight: 500;
 
-    letter-spacing: -1.5px;
-
-    margin-right: 25px;
+    letter-spacing: 0;
 
 }
 
@@ -188,7 +202,7 @@ body {
 
 .top-navigation .subscribe {
 
-    color: #ee72b6;
+    color: #ef73b6;
 
 }
 
@@ -199,38 +213,38 @@ body {
 
 .home {
 
-    position: relative;
+    width: 100%;
 
     min-height: 100vh;
 
-    width: 100%;
-
     padding-top: 1px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
 
 }
 
 
 /* =========================================
-   IMAGEN CENTRAL
+   BOLSA CENTRAL
 ========================================= */
 
 .central-image {
 
-    position: absolute;
+    width: 30rem;
 
-    left: 50%;
+    max-width: 80vw;
 
-    top: 8%;
-
-    transform: translateX(-50%);
-
-    width: 330px;
+    margin-top: 155px;
 
     display: flex;
 
     justify-content: center;
 
-    align-items: center;
+    align-items: flex-start;
 
     cursor: pointer;
 
@@ -247,26 +261,22 @@ body {
 
     object-fit: contain;
 
-    transition: opacity 0.12s ease;
-
 }
 
 
 /* =========================================
-   TEXTO PRINCIPAL
+   MANIFIESTO
 ========================================= */
 
 .manifesto {
 
-    position: absolute;
+    width: 100%;
 
-    left: 50%;
+    max-width: 1100px;
 
-    top: 60.5%;
+    padding: 0 30px;
 
-    transform: translateX(-50%);
-
-    width: min(850px, 90vw);
+    margin-top: 35px;
 
     text-align: center;
 
@@ -275,19 +285,26 @@ body {
 
 .manifesto h1 {
 
+    font-family:
+        "Neue Haas Grotesk",
+        Arial,
+        sans-serif;
+
+    font-style: normal;
+
+    font-weight: 500;
+
     margin: 0;
 
     padding: 0;
 
+    font-size: 4rem;
+
+    line-height: 1.1;
+
     color: #171f5d;
 
-    font-size: clamp(32px, 2.65vw, 45px);
-
-    line-height: 1.08;
-
-    letter-spacing: -2.2px;
-
-    font-weight: 500;
+    letter-spacing: 0em;
 
 }
 
@@ -299,22 +316,40 @@ body {
 }
 
 
+.manifesto a {
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+}
+
+
 /* =========================================
    AZUL
 ========================================= */
 
 .blue-highlight {
 
-    display: inline;
-
     background: #171f5d;
 
     color: #ffffff;
 
-    padding: 0 4px;
+    padding: 0 3px;
 
 }
 
+
+.blue-highlight a {
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================
+   ASTERISCO
+========================================= */
 
 .asterisk {
 
@@ -329,9 +364,7 @@ body {
 
 .green-highlight {
 
-    display: inline;
-
-    background: rgba(103, 182, 86, 0.55);
+    background: rgba(103, 182, 86, 0.5);
 
     padding: 0 3px;
 
@@ -344,15 +377,11 @@ body {
 
 .categories {
 
-    position: absolute;
-
-    left: 0;
-
-    bottom: 22px;
-
     width: 100%;
 
-    padding: 0 35px;
+    margin-top: auto;
+
+    padding: 0 35px 22px;
 
     display: grid;
 
@@ -372,13 +401,18 @@ body {
 
     color: #171f5d;
 
+    font-family:
+        "Neue Haas Grotesk",
+        Arial,
+        sans-serif;
+
     font-size: 27px;
 
     line-height: 1;
 
     font-weight: 500;
 
-    letter-spacing: -1.5px;
+    letter-spacing: 0;
 
     text-decoration: underline;
 
@@ -407,6 +441,7 @@ body {
 
 @media (max-width: 1000px) {
 
+
     .top-bar {
 
         padding: 22px 25px;
@@ -416,11 +451,9 @@ body {
 
     .top-navigation {
 
-        gap: 30px;
+        gap: 28px;
 
-        font-size: 23px;
-
-        margin-right: 10px;
+        font-size: 24px;
 
     }
 
@@ -432,9 +465,36 @@ body {
     }
 
 
+    .central-image {
+
+        width: 27rem;
+
+        margin-top: 145px;
+
+    }
+
+
+    .manifesto {
+
+        max-width: 90vw;
+
+        margin-top: 30px;
+
+    }
+
+
+    .manifesto h1 {
+
+        font-size: 3rem;
+
+    }
+
+
     .categories {
 
-        padding: 0 20px;
+        padding-left: 20px;
+
+        padding-right: 20px;
 
         column-gap: 8px;
 
@@ -447,21 +507,6 @@ body {
 
     }
 
-
-    .manifesto {
-
-        width: 90vw;
-
-    }
-
-
-    .manifesto h1 {
-
-        font-size:
-            clamp(28px, 3.5vw, 40px);
-
-    }
-
 }
 
 
@@ -470,6 +515,7 @@ body {
 ========================================= */
 
 @media (max-width: 700px) {
+
 
     .top-bar {
 
@@ -494,10 +540,6 @@ body {
 
         font-size: 18px;
 
-        letter-spacing: -0.7px;
-
-        margin-right: 0;
-
     }
 
 
@@ -519,62 +561,43 @@ body {
 
     .home {
 
-        min-height:
-            calc(100vh - 100px);
+        min-height: calc(100vh - 100px);
 
     }
 
 
     .central-image {
 
-        position: relative;
+        width: 16rem;
 
-        top: auto;
+        max-width: 65vw;
 
-        left: auto;
-
-        transform: none;
-
-        margin: 70px auto 0;
-
-        width: 145px;
+        margin-top: 65px;
 
     }
 
 
     .manifesto {
 
-        position: relative;
+        width: 100%;
 
-        top: auto;
+        padding: 0 15px;
 
-        left: auto;
-
-        transform: none;
-
-        width: calc(100% - 30px);
-
-        margin: 75px auto 0;
+        margin-top: 55px;
 
     }
 
 
     .manifesto h1 {
 
-        font-size: 29px;
+        font-size: 2rem;
 
-        line-height: 1.08;
-
-        letter-spacing: -1.4px;
+        line-height: 1.1;
 
     }
 
 
     .categories {
-
-        position: relative;
-
-        bottom: auto;
 
         margin-top: 80px;
 
@@ -595,4 +618,3 @@ body {
     }
 
 }
-```
