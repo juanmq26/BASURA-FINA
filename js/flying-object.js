@@ -1,8 +1,10 @@
+```js
 (() => {
 
     const container = document.querySelector('.flying-object');
 
     if (!container) return;
+
 
     const bee = document.createElement('img');
 
@@ -36,6 +38,7 @@
 
         const direction = Math.floor(random(0, 4));
 
+
         let startX;
         let startY;
         let endX;
@@ -46,6 +49,8 @@
 
         /*
          * IZQUIERDA → DERECHA
+         *
+         * Imagen normal.
          */
 
         if (direction === 0) {
@@ -63,6 +68,8 @@
 
         /*
          * DERECHA → IZQUIERDA
+         *
+         * Imagen espejada.
          */
 
         else if (direction === 1) {
@@ -80,6 +87,8 @@
 
         /*
          * ARRIBA → ABAJO
+         *
+         * Imagen normal.
          */
 
         else if (direction === 2) {
@@ -97,6 +106,8 @@
 
         /*
          * ABAJO → ARRIBA
+         *
+         * Imagen normal.
          */
 
         else {
@@ -120,20 +131,28 @@
 
 
         /*
-         * Posición inicial.
+         * Aplicamos el espejo por separado
+         * del movimiento.
          *
-         * La abeja se coloca fuera de pantalla
-         * antes de activar la transición.
+         * 1  = normal
+         * -1 = espejo horizontal
+         */
+
+        bee.style.scale = `${flip} 1`;
+
+
+        /*
+         * Colocamos la abeja fuera de pantalla.
          */
 
         bee.style.transition = 'none';
 
         bee.style.transform =
-            `translate(${startX}px, ${startY}px) scaleX(${flip})`;
+            `translate(${startX}px, ${startY}px)`;
 
 
         /*
-         * Forzamos al navegador a aplicar
+         * Forzamos al navegador a registrar
          * la posición inicial.
          */
 
@@ -141,20 +160,19 @@
 
 
         /*
-         * Ahora comienza el vuelo.
+         * Comienza el vuelo.
          */
 
         bee.style.transition =
             `transform ${duration}s linear`;
 
         bee.style.transform =
-            `translate(${endX}px, ${endY}px) scaleX(${flip})`;
+            `translate(${endX}px, ${endY}px)`;
 
 
         /*
-         * En lugar de depender de transitionend,
-         * utilizamos un temporizador ligeramente superior
-         * a la duración real.
+         * Esperamos un poco más que la duración
+         * para asegurarnos de que ha terminado.
          */
 
         setTimeout(() => {
@@ -168,6 +186,10 @@
 
             bee.style.visibility = 'hidden';
 
+
+            /*
+             * Pausa aleatoria.
+             */
 
             setTimeout(() => {
 
@@ -183,17 +205,19 @@
 
 
     /*
-     * IMPORTANTE:
-     *
-     * La abeja es visible desde el principio.
-     * flyBee() coloca inmediatamente su posición
-     * inicial fuera de pantalla antes del primer
-     * render de la animación.
+     * La abeja está preparada para aparecer
+     * directamente desde fuera de pantalla.
      */
 
     bee.style.visibility = 'visible';
+
+
+    /*
+     * Primer vuelo.
+     */
 
     flyBee();
 
 
 })();
+```
