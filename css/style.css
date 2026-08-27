@@ -1,300 +1,497 @@
-/* --------------------------------------------------
-   BASE
--------------------------------------------------- */
+/* =========================================
+   BASURAFINA
+   HOME
+========================================= */
+
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 
-html {
-  scroll-behavior: smooth;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
 }
 
 
 body {
+    background: #ffffff;
+    color: #171f5d;
 
-  margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 
-  background: white;
-
-  color: black;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 14px;
-
-  line-height: 1.2;
-
+    overflow-x: hidden;
 }
 
 
-button,
-a {
+/* =========================================
+   CABECERA
+========================================= */
 
-  font: inherit;
+.top-bar {
+    position: absolute;
 
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 25px 34px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    z-index: 20;
 }
 
 
-/* --------------------------------------------------
-   HEADER
--------------------------------------------------- */
-
-.header {
-
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-
-  padding: 20px;
-
-  z-index: 10;
-
-}
-
+/* LOGO */
 
 .logo {
+    display: flex;
+    flex-direction: column;
 
-  position: absolute;
+    color: #171f5d;
 
-  left: 50%;
+    text-decoration: none;
 
-  transform: translateX(-50%);
+    font-size: 29px;
+    line-height: 0.9;
 
-  color: black;
+    font-weight: 700;
 
-  text-decoration: none;
-
+    letter-spacing: -1.5px;
 }
 
+
+.logo sup {
+    font-size: 13px;
+    vertical-align: top;
+
+    position: relative;
+    top: -3px;
+}
+
+
+.logo-doodle {
+    display: block;
+
+    margin-top: 3px;
+
+    margin-left: 105px;
+
+    font-size: 38px;
+    line-height: 0.4;
+
+    transform: rotate(-15deg);
+
+    font-weight: 400;
+}
+
+
+/* NAVEGACIÓN SUPERIOR */
+
+.top-navigation {
+    display: flex;
+    align-items: center;
+
+    gap: 34px;
+
+    font-size: 29px;
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: -1.5px;
+}
+
+
+.top-navigation a {
+    color: #171f5d;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+
+.top-navigation a:hover {
+    text-decoration: underline;
+}
+
+
+.top-navigation .subscribe {
+    color: #ee72b6;
+}
+
+
+/* =========================================
+   HOME
+========================================= */
+
+.home {
+    position: relative;
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    padding-top: 1px;
+}
+
+
+/* =========================================
+   IMAGEN CENTRAL
+========================================= */
+
+.central-image {
+
+    position: absolute;
+
+    left: 50%;
+    top: 24.5%;
+
+    transform: translateX(-50%);
+
+    width: 145px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.central-image img {
+
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   TEXTO PRINCIPAL
+========================================= */
+
+.manifesto {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 61.5%;
+
+    transform: translateX(-50%);
+
+    width: min(850px, 90vw);
+
+    text-align: center;
+}
+
+
+.manifesto h1 {
+
+    margin: 0;
+
+    padding: 0;
+
+    color: #171f5d;
+
+    font-size: clamp(32px, 2.65vw, 45px);
+
+    line-height: 1.04;
+
+    letter-spacing: -2.2px;
+
+    font-weight: 700;
+}
+
+
+.manifesto em {
+    font-style: italic;
+}
+
+
+/* AZUL */
+
+.blue-highlight {
+
+    display: inline;
+
+    background: #171f5d;
+
+    color: #ffffff;
+
+    padding: 0 4px;
+}
+
+
+.asterisk {
+    color: #ffffff;
+}
+
+
+/* VERDE */
+
+.green-highlight {
+
+    display: inline;
+
+    background: rgba(103, 182, 86, 0.55);
+
+    padding: 0 3px;
+}
+
+
+/* =========================================
+   CATEGORÍAS
+========================================= */
 
 .categories {
 
-  display: flex;
+    position: absolute;
 
-  flex-direction: column;
+    left: 0;
+    bottom: 22px;
 
-  gap: 2px;
+    width: 100%;
 
+    padding: 0 35px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(8, 1fr);
+
+    align-items: center;
+
+    text-align: center;
+
+    column-gap: 20px;
 }
 
 
 .categories a {
 
-  color: black;
+    color: #171f5d;
 
-  text-decoration: none;
+    font-size: 27px;
 
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: -1.5px;
+
+    text-decoration: underline;
+
+    white-space: nowrap;
+}
+
+
+.categories a.active {
+
+    text-decoration: none;
 }
 
 
 .categories a:hover {
 
-  text-decoration: underline;
+    text-decoration: none;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .top-bar {
+
+        padding: 22px 25px;
+
+    }
+
+
+    .top-navigation {
+
+        gap: 22px;
+
+        font-size: 23px;
+
+    }
+
+
+    .logo {
+
+        font-size: 25px;
+
+    }
+
+
+    .categories {
+
+        padding: 0 20px;
+
+        column-gap: 8px;
+
+    }
+
+
+    .categories a {
+
+        font-size: 21px;
+
+    }
+
+
+    .manifesto {
+
+        width: 90vw;
+
+    }
+
+
+    .manifesto h1 {
+
+        font-size: clamp(28px, 3.5vw, 40px);
+
+    }
 
 }
 
 
-/* --------------------------------------------------
-   GALERÍA
--------------------------------------------------- */
-
-.gallery {
-
-  padding: 120px 20px 20px;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 10px;
-
-}
-
-
-.project {
-
-  appearance: none;
-
-  border: 0;
-
-  padding: 0;
-
-  margin: 0;
-
-  background: transparent;
-
-  cursor: pointer;
-
-}
-
-
-.project img {
-
-  display: block;
-
-  width: 100%;
-
-  height: auto;
-
-  transition:
-    transform 0.25s ease;
-
-}
-
-
-.project:hover img {
-
-  transform: scale(1.02);
-
-}
-
-
-/* --------------------------------------------------
-   MODAL
--------------------------------------------------- */
-
-.overlay {
-
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 100;
-
-  display: none;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 40px;
-
-  background:
-    rgba(255,255,255,0.45);
-
-  backdrop-filter:
-    blur(12px);
-
-  -webkit-backdrop-filter:
-    blur(12px);
-
-}
-
-
-.overlay.active {
-
-  display: flex;
-
-}
-
-
-.modal {
-
-  position: relative;
-
-  width: min(
-    700px,
-    90vw
-  );
-
-  background: white;
-
-}
-
-
-.modal img {
-
-  display: block;
-
-  width: 100%;
-
-  height: auto;
-
-}
-
-
-.description {
-
-  padding-top: 10px;
-
-}
-
-
-#modal-dwg {
-
-  display: inline-block;
-
-  margin-top: 10px;
-
-  color: black;
-
-}
-
-
-.close {
-
-  position: absolute;
-
-  top: -30px;
-
-  right: 0;
-
-  border: 0;
-
-  background: none;
-
-  color: black;
-
-  font-size: 24px;
-
-  line-height: 1;
-
-  cursor: pointer;
-
-}
-
-
-body.modal-open {
-
-  overflow: hidden;
-
-}
-
-
-/* --------------------------------------------------
+/* =========================================
    MÓVIL
--------------------------------------------------- */
+========================================= */
 
-@media (
-  max-width: 700px
-) {
+@media (max-width: 700px) {
 
-  .header {
+    .top-bar {
 
-    padding: 15px;
+        position: relative;
 
-  }
+        padding: 18px 18px;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+    }
 
 
-  .gallery {
+    .top-navigation {
 
-    padding:
-      100px 10px 10px;
+        width: 100%;
 
-    grid-template-columns:
-      repeat(2, 1fr);
+        justify-content: space-between;
 
-    gap: 6px;
+        gap: 10px;
 
-  }
+        font-size: 18px;
+
+        letter-spacing: -0.7px;
+
+    }
+
+
+    .logo {
+
+        font-size: 24px;
+
+    }
+
+
+    .logo-doodle {
+
+        margin-left: 80px;
+
+        font-size: 30px;
+
+    }
+
+
+    .home {
+
+        min-height: calc(100vh - 100px);
+
+    }
+
+
+    .central-image {
+
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        transform: none;
+
+        margin: 70px auto 0;
+
+        width: 125px;
+
+    }
+
+
+    .manifesto {
+
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        transform: none;
+
+        width: calc(100% - 30px);
+
+        margin: 80px auto 0;
+
+    }
+
+
+    .manifesto h1 {
+
+        font-size: 29px;
+
+        line-height: 1.06;
+
+        letter-spacing: -1.4px;
+
+    }
+
+
+    .categories {
+
+        position: relative;
+
+        bottom: auto;
+
+        margin-top: 80px;
+
+        padding: 0 15px 25px;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        row-gap: 15px;
+
+    }
+
+
+    .categories a {
+
+        font-size: 22px;
+
+    }
 
 }
