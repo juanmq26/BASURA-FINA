@@ -1,8 +1,26 @@
+```css
 /* =========================================
    BASURAFINA
    HOME
 ========================================= */
 
+
+/* =========================================
+   FUENTE
+========================================= */
+
+@font-face {
+    font-family: "Neue Haas Grotesk";
+    src: url("../fonts/NeueHaasDisplayMediu.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
 
 * {
     box-sizing: border-box;
@@ -22,7 +40,7 @@ body {
     background: #ffffff;
     color: #171f5d;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Neue Haas Grotesk", sans-serif;
 
     overflow-x: hidden;
 }
@@ -63,7 +81,7 @@ body {
     font-size: 29px;
     line-height: 0.9;
 
-    font-weight: 700;
+    font-weight: 500;
 
     letter-spacing: -1.5px;
 }
@@ -100,14 +118,16 @@ body {
     display: flex;
     align-items: center;
 
-    gap: 34px;
+    gap: 45px;
 
     font-size: 29px;
     line-height: 1;
 
-    font-weight: 700;
+    font-weight: 500;
 
     letter-spacing: -1.5px;
+
+    margin-right: 25px;
 }
 
 
@@ -158,7 +178,7 @@ body {
 
     transform: translateX(-50%);
 
-    width: 145px;
+    width: 170px;
 
     display: flex;
     justify-content: center;
@@ -187,7 +207,7 @@ body {
 
     left: 50%;
 
-    top: 61.5%;
+    top: 60.5%;
 
     transform: translateX(-50%);
 
@@ -207,11 +227,11 @@ body {
 
     font-size: clamp(32px, 2.65vw, 45px);
 
-    line-height: 1.04;
+    line-height: 1.08;
 
     letter-spacing: -2.2px;
 
-    font-weight: 700;
+    font-weight: 500;
 }
 
 
@@ -287,7 +307,7 @@ body {
 
     line-height: 1;
 
-    font-weight: 700;
+    font-weight: 500;
 
     letter-spacing: -1.5px;
 
@@ -324,9 +344,11 @@ body {
 
     .top-navigation {
 
-        gap: 22px;
+        gap: 30px;
 
         font-size: 23px;
+
+        margin-right: 10px;
 
     }
 
@@ -401,6 +423,8 @@ body {
 
         letter-spacing: -0.7px;
 
+        margin-right: 0;
+
     }
 
 
@@ -438,7 +462,7 @@ body {
 
         margin: 70px auto 0;
 
-        width: 125px;
+        width: 145px;
 
     }
 
@@ -454,7 +478,7 @@ body {
 
         width: calc(100% - 30px);
 
-        margin: 80px auto 0;
+        margin: 75px auto 0;
 
     }
 
@@ -463,7 +487,7 @@ body {
 
         font-size: 29px;
 
-        line-height: 1.06;
+        line-height: 1.08;
 
         letter-spacing: -1.4px;
 
@@ -495,3 +519,4 @@ body {
     }
 
 }
+```
