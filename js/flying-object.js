@@ -117,13 +117,13 @@
          * No queremos que parezca que está girando.
          */
 
-        const rotation = random(-8, 8);
+        const fixedRotation = 90;
 
 
         bee.style.transition = 'none';
 
         bee.style.transform =
-            `translate(${startX}px, ${startY}px) rotate(${angle + rotation}deg)`;
+            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
         /*
@@ -138,7 +138,7 @@
             `transform ${duration}s linear`;
 
         bee.style.transform =
-            `translate(${endX}px, ${endY}px) rotate(${angle + rotation}deg)`;
+            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
 
 
         /*
