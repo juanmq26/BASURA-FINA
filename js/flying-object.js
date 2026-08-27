@@ -117,7 +117,7 @@
          * No queremos que parezca que está girando.
          */
 
-        const fixedRotation = 90;
+        const fixedRotation = 0;
 
 
         bee.style.transition = 'none';
