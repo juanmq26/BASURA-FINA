@@ -5,7 +5,6 @@
 
     if (!container) return;
 
-
     const bee = document.createElement('img');
 
     bee.src = 'images/ABEJA01_FLY.png';
@@ -49,7 +48,6 @@
 
         /*
          * IZQUIERDA → DERECHA
-         *
          * Imagen normal.
          */
 
@@ -68,7 +66,6 @@
 
         /*
          * DERECHA → IZQUIERDA
-         *
          * Imagen espejada.
          */
 
@@ -87,8 +84,6 @@
 
         /*
          * ARRIBA → ABAJO
-         *
-         * Imagen normal.
          */
 
         else if (direction === 2) {
@@ -106,8 +101,6 @@
 
         /*
          * ABAJO → ARRIBA
-         *
-         * Imagen normal.
          */
 
         else {
@@ -131,28 +124,20 @@
 
 
         /*
-         * Aplicamos el espejo por separado
-         * del movimiento.
+         * Posición inicial.
          *
-         * 1  = normal
-         * -1 = espejo horizontal
-         */
-
-        bee.style.scale = `${flip} 1`;
-
-
-        /*
-         * Colocamos la abeja fuera de pantalla.
+         * La abeja se coloca directamente fuera
+         * de la pantalla antes de iniciar el movimiento.
          */
 
         bee.style.transition = 'none';
 
         bee.style.transform =
-            `translate(${startX}px, ${startY}px)`;
+            `translate(${startX}px, ${startY}px) scaleX(${flip})`;
 
 
         /*
-         * Forzamos al navegador a registrar
+         * Forzamos al navegador a aplicar
          * la posición inicial.
          */
 
@@ -167,53 +152,38 @@
             `transform ${duration}s linear`;
 
         bee.style.transform =
-            `translate(${endX}px, ${endY}px)`;
+            `translate(${endX}px, ${endY}px) scaleX(${flip})`;
 
 
         /*
-         * Esperamos un poco más que la duración
-         * para asegurarnos de que ha terminado.
+         * Esperamos a que termine.
          */
 
         setTimeout(() => {
 
             bee.style.transition = 'none';
 
-            /*
-             * Ocultamos la abeja mientras esperamos
-             * el siguiente vuelo.
-             */
-
-            bee.style.visibility = 'hidden';
-
 
             /*
-             * Pausa aleatoria.
+             * Esperamos antes del siguiente vuelo.
              */
 
             setTimeout(() => {
-
-                bee.style.visibility = 'visible';
 
                 flyBee();
 
             }, random(1500, 5000));
 
-        }, (duration * 1000) + 100);
+        }, duration * 1000);
 
     }
 
 
     /*
-     * La abeja está preparada para aparecer
-     * directamente desde fuera de pantalla.
-     */
-
-    bee.style.visibility = 'visible';
-
-
-    /*
      * Primer vuelo.
+     *
+     * No hay espera inicial: la abeja entra
+     * directamente desde fuera de la pantalla.
      */
 
     flyBee();
