@@ -1,45 +1,178 @@
 ```js
 (() => {
 
+    const container = document.querySelector('.flying-object');
+
+    if (!container) return;
+
     const bee = document.createElement('img');
 
-    bee.src = '/images/ABEJA01_FLY.png';
+    bee.src = 'images/ABEJA01_FLY.png';
+    bee.className = 'flying-bee';
     bee.alt = '';
 
-    bee.style.cssText = `
-        position: fixed !important;
-        left: -100px !important;
-        top: 200px !important;
-        width: 90px !important;
-        height: auto !important;
-        z-index: 999999 !important;
-        pointer-events: none !important;
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    `;
+    container.appendChild(bee);
 
-    document.body.appendChild(bee);
 
-    function fly() {
+    function random(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+
+    function flyBee() {
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const beeSize = 90;
+        const margin = beeSize * 2;
+
+        const direction = Math.floor(random(0, 4));
+
+        let startX;
+        let startY;
+        let endX;
+        let endY;
+
+        let flip = false;
+
+
+        /*
+         * IZQUIERDA → DERECHA
+         * ESPEJO
+         */
+
+        if (direction === 0) {
+
+            startX = -margin;
+            startY = random(0, height);
+
+            endX = width + margin;
+            endY = random(0, height);
+
+            flip = true;
+
+        }
+
+
+        /*
+         * DERECHA → IZQUIERDA
+         * NORMAL
+         */
+
+        else if (direction === 1) {
+
+            startX = width + margin;
+            startY = random(0, height);
+
+            endX = -margin;
+            endY = random(0, height);
+
+            flip = false;
+
+        }
+
+
+        /*
+         * ARRIBA → ABAJO
+         */
+
+        else if (direction === 2) {
+
+            startX = random(0, width);
+            startY = -margin;
+
+            endX = random(0, width);
+            endY = height + margin;
+
+            flip = false;
+
+        }
+
+
+        /*
+         * ABAJO → ARRIBA
+         */
+
+        else {
+
+            startX = random(0, width);
+            startY = height + margin;
+
+            endX = random(0, width);
+            endY = -margin;
+
+            flip = false;
+
+        }
+
+
+        const scaleX = flip ? -1 : 1;
+
+        const duration = random(7, 12);
+
+
+        /*
+         * POSICIÓN INICIAL
+         */
 
         bee.style.transition = 'none';
-        bee.style.left = '-100px';
-        bee.style.top = '200px';
+
+        bee.style.transform =
+            `translate(${startX}px, ${startY}px) scaleX(${scaleX})`;
+
 
         bee.offsetHeight;
 
-        bee.style.transition = 'left 8s linear, top 8s linear';
-        bee.style.left = 'calc(100vw + 100px)';
-        bee.style.top = '400px';
 
-        setTimeout(() => {
-            fly();
-        }, 8000);
+        /*
+         * VUELO
+         */
+
+        bee.style.transition =
+            `transform ${duration}s linear`;
+
+        bee.style.transform =
+            `translate(${endX}px, ${endY}px) scaleX(${scaleX})`;
+
+
+        /*
+         * SIGUIENTE VUELO
+         */
+
+        const onTransitionEnd = (event) => {
+
+            if (event.propertyName !== 'transform') return;
+
+            bee.removeEventListener(
+                'transitionend',
+                onTransitionEnd
+            );
+
+            bee.style.transition = 'none';
+
+            setTimeout(() => {
+                flyBee();
+            }, random(1500, 5000));
+
+        };
+
+
+        bee.addEventListener(
+            'transitionend',
+            onTransitionEnd
+        );
 
     }
 
-    fly();
+
+    /*
+     * PRIMER VUELO
+     */
+
+    setTimeout(() => {
+        flyBee();
+    }, 2000);
 
 })();
 ```
