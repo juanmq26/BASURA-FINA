@@ -20,9 +20,7 @@ categoryLinks.forEach(function(link) {
         event.preventDefault();
 
         categoryLinks.forEach(function(otherLink) {
-
             otherLink.classList.remove("active");
-
         });
 
         link.classList.add("active");
@@ -61,6 +59,9 @@ if (logo) {
 ========================================= */
 
 const centralImage =
+    document.querySelector(".central-image");
+
+const bagImage =
     document.querySelector(".central-image img");
 
 
@@ -75,25 +76,46 @@ const bags = [
 let currentBag = 0;
 
 
-if (centralImage) {
+/* -----------------------------------------
+   PRE-CARGAR IMÁGENES
+----------------------------------------- */
+
+bags.forEach(function(src) {
+
+    const image = new Image();
+
+    image.src = src;
+
+});
+
+
+/* -----------------------------------------
+   CLICK EN LA BOLSA
+----------------------------------------- */
+
+if (centralImage && bagImage) {
 
     centralImage.style.cursor = "pointer";
 
     centralImage.addEventListener("click", function() {
 
-        currentBag++;
+        currentBag = currentBag + 1;
 
         if (currentBag >= bags.length) {
             currentBag = 0;
         }
 
-        centralImage.style.opacity = "0";
+
+        /* Pequeño fade */
+
+        bagImage.style.opacity = "0";
+
 
         setTimeout(function() {
 
-            centralImage.src = bags[currentBag];
+            bagImage.src = bags[currentBag];
 
-            centralImage.style.opacity = "1";
+            bagImage.style.opacity = "1";
 
         }, 120);
 
