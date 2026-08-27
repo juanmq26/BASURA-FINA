@@ -194,6 +194,8 @@ body {
     height: auto;
 
     object-fit: contain;
+   
+    transition: opacity 0.12s ease;
 }
 
 
