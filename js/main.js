@@ -20,7 +20,9 @@ categoryLinks.forEach(function(link) {
         event.preventDefault();
 
         categoryLinks.forEach(function(otherLink) {
+
             otherLink.classList.remove("active");
+
         });
 
         link.classList.add("active");
@@ -45,8 +47,11 @@ if (logo) {
         event.preventDefault();
 
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
 
     });
@@ -61,65 +66,79 @@ if (logo) {
 const centralImage =
     document.querySelector(".central-image");
 
+
 const bagImage =
     document.querySelector(".central-image img");
 
 
 const bags = [
-    "./images/BOLSA_1.png",
-    "./images/BOLSA_2.png",
-    "./images/BOLSA_3.png",
-    "./images/BOLSA_4.png"
+
+    "./images/bag-01.png",
+
+    "./images/bag-02.png",
+
+    "./images/bag-03.png",
+
+    "./images/bag-04.png"
+
 ];
 
 
 let currentBag = 0;
 
 
-/* -----------------------------------------
-   PRE-CARGAR IMÁGENES
------------------------------------------ */
+/* =========================================
+   PRE-CARGAR LAS IMÁGENES
+========================================= */
 
 bags.forEach(function(src) {
 
-    const image = new Image();
+    const image =
+        new Image();
 
     image.src = src;
 
 });
 
 
-/* -----------------------------------------
-   CLICK EN LA BOLSA
------------------------------------------ */
+/* =========================================
+   CAMBIAR BOLSA AL HACER CLICK
+========================================= */
 
 if (centralImage && bagImage) {
 
     centralImage.style.cursor = "pointer";
 
-    centralImage.addEventListener("click", function() {
 
-        currentBag = currentBag + 1;
+    centralImage.addEventListener(
+        "click",
+        function() {
 
-        if (currentBag >= bags.length) {
-            currentBag = 0;
+            currentBag++;
+
+            if (
+                currentBag >= bags.length
+            ) {
+
+                currentBag = 0;
+
+            }
+
+
+            bagImage.style.opacity = "0";
+
+
+            setTimeout(function() {
+
+                bagImage.src =
+                    bags[currentBag];
+
+                bagImage.style.opacity = "1";
+
+            }, 120);
+
         }
-
-
-        /* Pequeño fade */
-
-        bagImage.style.opacity = "0";
-
-
-        setTimeout(function() {
-
-            bagImage.src = bags[currentBag];
-
-            bagImage.style.opacity = "1";
-
-        }, 120);
-
-    });
+    );
 
 }
 ```
