@@ -59,6 +59,8 @@ body {
         Helvetica,
         sans-serif;
 
+    font-weight: 700;
+
     overflow-x: hidden;
 }
 
@@ -107,9 +109,9 @@ body {
 
     line-height: 0.9;
 
-    font-weight: 500;
+    font-weight: 700;
 
-    letter-spacing: 0;
+    letter-spacing: -0.2px;
 }
 
 .logo sup {
@@ -135,7 +137,7 @@ body {
 
     transform: rotate(-15deg);
 
-    font-weight: 500;
+    font-weight: 700;
 }
 
 
@@ -160,9 +162,9 @@ body {
 
     line-height: 1;
 
-    font-weight: 500;
+    font-weight: 700;
 
-    letter-spacing: 0;
+    letter-spacing: -0.2px;
 }
 
 .top-navigation a {
@@ -270,7 +272,7 @@ body {
 
     line-height: 1.08;
 
-    letter-spacing: -0.4px;
+    letter-spacing: -0.2px;
 }
 
 .manifesto em {
@@ -356,9 +358,9 @@ body {
 
     line-height: 1;
 
-    font-weight: 500;
+    font-weight: 700;
 
-    letter-spacing: 0;
+    letter-spacing: -0.2px;
 
     text-decoration: underline;
 
