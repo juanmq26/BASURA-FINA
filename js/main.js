@@ -47,8 +47,11 @@ if (logo) {
         event.preventDefault();
 
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
 
     });
@@ -57,26 +60,26 @@ if (logo) {
 
 
 /* =========================================
-   BOLSA CENTRAL
+   BOLSA INTERACTIVA
 ========================================= */
 
-const centralImage =
-    document.querySelector(".central-image");
+const bagContainer =
+    document.getElementById("bag-container");
 
 
 const bagImage =
-    document.querySelector(".central-image img");
+    document.getElementById("bag-image");
 
 
 const bags = [
 
-    "./images/bag1.png",
+    "https://basura-fina.juanmq26.workers.dev/images/bag1.png",
 
-    "./images/bag2.png",
+    "https://basura-fina.juanmq26.workers.dev/images/bag2.png",
 
-    "./images/bag3.png",
+    "https://basura-fina.juanmq26.workers.dev/images/bag3.png",
 
-    "./images/bag4.png"
+    "https://basura-fina.juanmq26.workers.dev/images/bag4.png"
 
 ];
 
@@ -85,29 +88,12 @@ let currentBag = 0;
 
 
 /* =========================================
-   PRE-CARGAR IMÁGENES
+   CLICK
 ========================================= */
 
-bags.forEach(function(src) {
+if (bagContainer && bagImage) {
 
-    const image =
-        new Image();
-
-    image.src = src;
-
-});
-
-
-/* =========================================
-   CLICK EN LA BOLSA
-========================================= */
-
-if (centralImage && bagImage) {
-
-    centralImage.style.cursor = "pointer";
-
-
-    centralImage.addEventListener(
+    bagContainer.addEventListener(
         "click",
         function() {
 
@@ -120,17 +106,8 @@ if (centralImage && bagImage) {
             }
 
 
-            bagImage.style.opacity = "0";
-
-
-            setTimeout(function() {
-
-                bagImage.src =
-                    bags[currentBag];
-
-                bagImage.style.opacity = "1";
-
-            }, 120);
+            bagImage.src =
+                bags[currentBag];
 
         }
     );
