@@ -1,5 +1,4 @@
-```js
-(() => {
+aMIRA ESTO FUNCIONA: (() => {
 
     const container = document.querySelector('.flying-object');
 
@@ -42,6 +41,10 @@
 
         const direction = Math.floor(random(0, 4));
 
+        if (direction === 0) {
+    bee.src = 'images/ABEJA01_FLY_MIRROR.png';
+}
+
         let startX;
         let startY;
         let endX;
@@ -60,8 +63,6 @@
             endX = width + margin;
             endY = random(0, height);
 
-            bee.src = 'images/ABEJA01_FLY_MIRROR.png';
-
         }
 
 
@@ -76,8 +77,6 @@
 
             endX = -margin;
             endY = random(0, height);
-
-            bee.src = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -221,4 +220,3 @@
 
 
 })();
-```
