@@ -1118,3 +1118,27 @@ body {
 
     font-size: 15px;
 }
+/* =========================================
+   DRAWING MODAL — AJUSTES
+========================================= */
+
+/* Fondo más desenfocado y neutro */
+.drawing-modal {
+    background: rgba(255, 255, 255, 0.45);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* X más grande y subrayada */
+.drawing-modal-close {
+    font-size: 42px;
+
+    color: #171f5d;
+
+    text-decoration: underline;
+    text-decoration-color: #171f5d;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
