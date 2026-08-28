@@ -1,3 +1,4 @@
+```js
 (() => {
 
     const container = document.querySelector('.flying-object');
@@ -46,6 +47,13 @@
         let endX;
         let endY;
 
+        /*
+         * NUEVO:
+         * false = imagen original
+         * true = imagen en espejo
+         */
+        let flip = false;
+
 
         /*
          * IZQUIERDA → DERECHA
@@ -58,6 +66,11 @@
 
             endX = width + margin;
             endY = random(0, height);
+
+            /*
+             * Espejamos la abeja.
+             */
+            flip = true;
 
         }
 
@@ -73,6 +86,11 @@
 
             endX = -margin;
             endY = random(0, height);
+
+            /*
+             * PNG original.
+             */
+            flip = false;
 
         }
 
@@ -109,13 +127,6 @@
 
         /*
          * ORIENTACIÓN FIJA
-         *
-         * La abeja NO gira siguiendo la trayectoria.
-         *
-         * 0   = orientación original
-         * 90  = giro 90º
-         * 180 = giro 180º
-         * 270 = giro 270º
          */
 
         const fixedRotation = 0;
@@ -123,11 +134,18 @@
 
         /*
          * Duración del vuelo.
-         *
-         * Menor número = más rápida.
          */
 
         const duration = random(7, 12);
+
+
+        /*
+         * NUEVO:
+         * -1 = espejo
+         *  1 = original
+         */
+
+        const scaleX = flip ? -1 : 1;
 
 
         /*
@@ -138,7 +156,7 @@
         bee.style.transition = 'none';
 
         bee.style.transform =
-            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
+            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg) scaleX(${scaleX})`;
 
 
         /*
@@ -157,14 +175,11 @@
             `transform ${duration}s linear`;
 
         bee.style.transform =
-            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
+            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg) scaleX(${scaleX})`;
 
 
         /*
          * Esperamos al final REAL de la transición.
-         *
-         * Esto es más fiable que usar un setTimeout
-         * exactamente igual a la duración.
          */
 
         const onTransitionEnd = (event) => {
@@ -203,9 +218,6 @@
 
     /*
      * Primer vuelo.
-     *
-     * Esperamos 2 segundos antes de que
-     * aparezca la primera abeja.
      */
 
     setTimeout(() => {
@@ -216,3 +228,4 @@
 
 
 })();
+```
