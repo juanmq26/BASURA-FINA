@@ -1,3 +1,4 @@
+```js
 (() => {
 
     const container = document.querySelector('.flying-object');
@@ -59,6 +60,8 @@
             endX = width + margin;
             endY = random(0, height);
 
+            bee.src = 'images/ABEJA01_FLY_MIRROR.png';
+
         }
 
 
@@ -73,6 +76,8 @@
 
             endX = -margin;
             endY = random(0, height);
+
+            bee.src = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -216,3 +221,4 @@
 
 
 })();
+```
