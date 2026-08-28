@@ -206,7 +206,51 @@
         }
 
     </script>
+<script>
 
+    const fly = document.querySelector(".header-fly");
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+
+    fly.addEventListener("mousedown", function (event) {
+
+        dragging = true;
+
+        const rect = fly.getBoundingClientRect();
+
+        offsetX = event.clientX - rect.left;
+        offsetY = event.clientY - rect.top;
+
+        fly.style.cursor = "grabbing";
+
+    });
+
+
+    document.addEventListener("mousemove", function (event) {
+
+        if (!dragging) return;
+
+        fly.style.left =
+            (event.clientX - offsetX) + "px";
+
+        fly.style.top =
+            (event.clientY - offsetY) + "px";
+
+    });
+
+
+    document.addEventListener("mouseup", function () {
+
+        dragging = false;
+
+        fly.style.cursor = "grab";
+
+    });
+
+</script>
 
 </body>
 
