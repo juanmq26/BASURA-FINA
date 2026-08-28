@@ -752,3 +752,18 @@ body {
 
     z-index: -1;
 }
+/* =========================================
+   PEOPLE — AJUSTE FINAL
+========================================= */
+
+.people-page {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.people-bottom {
+    margin-top: auto !important;
+    padding-top: 120px !important;
+    padding-bottom: 25px !important;
+}
