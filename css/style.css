@@ -1618,11 +1618,11 @@ body {
     bottom: 0;
     left: -100px;
 
-    width: 200px;
+    width: 150px;
 
     z-index: 20;
 
-    animation: worm-crawl 28s linear infinite;
+    animation: worm-crawl 32s linear infinite;
 }
 
 
