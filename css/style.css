@@ -1610,3 +1610,42 @@ body {
 
     white-space: nowrap;
 }
+/* GUSANO */
+
+.moving-worm {
+    position: fixed;
+
+    bottom: 0;
+    left: -100px;
+
+    width: 80px;
+
+    z-index: 20;
+
+    animation: worm-crawl 18s linear infinite;
+}
+
+
+@keyframes worm-crawl {
+
+    0% {
+        transform: translateX(0) rotate(2deg);
+    }
+
+    25% {
+        transform: translateX(25vw) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateX(50vw) rotate(2deg);
+    }
+
+    75% {
+        transform: translateX(75vw) rotate(-2deg);
+    }
+
+    100% {
+        transform: translateX(110vw) rotate(2deg);
+    }
+
+}
