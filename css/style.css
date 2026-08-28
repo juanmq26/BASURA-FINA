@@ -728,16 +728,22 @@ body {
 
 
 .green-underline {
-    display: inline;
+    position: relative;
+    display: inline-block;
+    z-index: 0;
+}
 
-    background: linear-gradient(
-        transparent 52%,
-        #67B656 52%,
-        #67B656 90%,
-        transparent 90%
-    );
+.green-underline::after {
+    content: "";
+    position: absolute;
 
-    color: #171f5d;
+    left: -3px;
+    right: -3px;
 
-    padding: 0 4px;
+    bottom: 8%;
+    height: 45%;
+
+    background: #67B656;
+
+    z-index: -1;
 }
