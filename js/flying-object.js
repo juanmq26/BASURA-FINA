@@ -1,3 +1,4 @@
+```js
 (() => {
 
     const container = document.querySelector('.flying-object');
@@ -12,6 +13,12 @@
 
     container.appendChild(bee);
 
+    /*
+     * Ocultamos la abeja mientras esperamos
+     * los 2 segundos iniciales.
+     */
+    bee.style.visibility = 'hidden';
+
 
     function random(min, max) {
         return Math.random() * (max - min) + min;
@@ -23,21 +30,9 @@
         const width = window.innerWidth;
         const height = window.innerHeight;
 
-        /*
-         * Margen suficiente para que la abeja
-         * quede completamente fuera de la pantalla
-         * al empezar y terminar.
-         */
         const beeSize = 90;
         const margin = beeSize * 2;
 
-
-        /*
-         * Elegimos aleatoriamente uno de los cuatro
-         * sentidos principales.
-         *
-         * Todos los vuelos tienen componente diagonal.
-         */
 
         const direction = Math.floor(random(0, 4));
 
@@ -109,30 +104,20 @@
 
         /*
          * ORIENTACIÓN FIJA
-         *
-         * La abeja NO gira siguiendo la trayectoria.
-         *
-         * 0   = orientación original
-         * 90  = giro 90º
-         * 180 = giro 180º
-         * 270 = giro 270º
          */
 
         const fixedRotation = 90;
 
 
         /*
-         * Duración del vuelo.
-         *
-         * Menor número = más rápida.
+         * Duración del vuelo
          */
 
         const duration = random(7, 12);
 
 
         /*
-         * Colocamos la abeja en el punto inicial
-         * sin transición.
+         * POSICIÓN INICIAL
          */
 
         bee.style.transition = 'none';
@@ -142,15 +127,18 @@
 
 
         /*
-         * Forzamos al navegador a aplicar
-         * la posición inicial antes de empezar.
+         * Ahora ya está fuera de pantalla,
+         * así que podemos mostrarla.
          */
+
+        bee.style.visibility = 'visible';
+
 
         bee.offsetHeight;
 
 
         /*
-         * Comienza el vuelo.
+         * COMIENZA EL VUELO
          */
 
         bee.style.transition =
@@ -161,26 +149,17 @@
 
 
         /*
-         * Esperamos al final REAL de la transición.
-         *
-         * Esto es más fiable que usar un setTimeout
-         * exactamente igual a la duración.
+         * FINAL DEL VUELO
          */
 
         const onTransitionEnd = (event) => {
 
             if (event.propertyName !== 'transform') return;
 
-
             bee.removeEventListener(
                 'transitionend',
                 onTransitionEnd
             );
-
-
-            /*
-             * Pausa aleatoria antes del siguiente vuelo.
-             */
 
             bee.style.transition = 'none';
 
@@ -203,9 +182,6 @@
 
     /*
      * Primer vuelo.
-     *
-     * Esperamos 2 segundos antes de que
-     * aparezca la primera abeja.
      */
 
     setTimeout(() => {
@@ -216,3 +192,4 @@
 
 
 })();
+```
