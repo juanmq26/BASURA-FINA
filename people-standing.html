@@ -472,6 +472,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>    
 
+<script>
+
+    const fly = document.querySelector(".header-fly");
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+
+    fly.addEventListener("mousedown", function (event) {
+
+        dragging = true;
+
+        const rect = fly.getBoundingClientRect();
+
+        offsetX = event.clientX - rect.left;
+        offsetY = event.clientY - rect.top;
+
+        fly.style.cursor = "grabbing";
+
+        event.preventDefault();
+        event.stopPropagation();
+
+    });
+
+
+    document.addEventListener("mousemove", function (event) {
+
+        if (!dragging) return;
+
+        fly.style.left =
+            (event.clientX - offsetX) + "px";
+
+        fly.style.top =
+            (event.clientY - offsetY) + "px";
+
+    });
+
+
+    document.addEventListener("mouseup", function (event) {
+
+        if (!dragging) return;
+
+        dragging = false;
+
+        fly.style.cursor = "grab";
+
+        event.preventDefault();
+        event.stopPropagation();
+
+    });
+
+</script>
+    
 </body>
 
 </html>
