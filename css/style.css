@@ -839,3 +839,8 @@ body {
 .people-page .people-navigation {
     margin-top: 25px !important;
 }
+/* AJUSTE FINAL PEOPLE */
+
+.people-page .people-instructions {
+    margin-top: 250px !important;
+}
