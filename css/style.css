@@ -482,3 +482,220 @@ body {
     }
 
 }
+/* =========================================
+   PEOPLE
+========================================= */
+
+.people-page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 25px 35px 10rem;
+
+    color: #171f5d;
+}
+
+
+.people-title {
+    margin: 0;
+
+    padding: 0;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 29px;
+
+    line-height: 1;
+
+    font-weight: 550;
+
+    color: #171f5d;
+}
+
+
+.people-title a {
+    color: #171f5d;
+
+    text-decoration: none;
+}
+
+
+.people-arrow {
+    display: inline-block;
+
+    margin: 0 4px;
+}
+
+
+.people-title i {
+    font-style: italic;
+}
+
+
+.people-navigation {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    text-align: left;
+
+    gap: 0;
+}
+
+
+.people-navigation a {
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    font-weight: 550;
+
+    text-decoration: none;
+}
+
+
+.people-navigation a:hover {
+    text-decoration: underline;
+}
+
+
+.people-navigation a.active {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   GALERÍA
+========================================= */
+
+.people-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 1rem;
+
+    width: 100%;
+
+    margin-top: 70px;
+}
+
+
+.people-item {
+    width: 100%;
+}
+
+
+.people-item img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   PARTE INFERIOR
+========================================= */
+
+.people-bottom {
+    width: 100%;
+
+    margin-top: 10rem;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+}
+
+
+.people-bottom a {
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    font-weight: 550;
+
+    text-decoration: none;
+}
+
+
+.people-bottom a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MÓVIL
+========================================= */
+
+@media (max-width: 700px) {
+
+    .people-page {
+        padding: 20px 18px 8rem;
+    }
+
+
+    .people-title {
+        font-size: 24px;
+    }
+
+
+    .people-navigation {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        row-gap: 15px;
+
+        margin-top: 25px;
+    }
+
+
+    .people-navigation a {
+        font-size: 20px;
+    }
+
+
+    .people-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 0.7rem;
+
+        margin-top: 50px;
+    }
+
+
+    .people-bottom {
+        margin-top: 7rem;
+
+        flex-direction: column;
+
+        gap: 25px;
+    }
+
+
+    .people-bottom a {
+        font-size: 20px;
+    }
+
+}
