@@ -728,8 +728,16 @@ body {
 
 
 .green-underline {
-    text-decoration-line: underline;
-    text-decoration-color: #67B656;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 3px;
+    display: inline;
+
+    background: linear-gradient(
+        transparent 52%,
+        #67B656 52%,
+        #67B656 90%,
+        transparent 90%
+    );
+
+    color: #171f5d;
+
+    padding: 0 4px;
 }
