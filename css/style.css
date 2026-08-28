@@ -1184,3 +1184,261 @@ body {
 
     text-align: center;
 }
+/* =========================================
+   BASURA
+========================================= */
+
+.basura-page {
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 120px 35px 10rem;
+
+    color: #171f5d;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.basura-title {
+    margin: 0;
+
+    padding: 0;
+
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 40px;
+
+    line-height: 1;
+
+    font-weight: 550;
+}
+
+
+.basura-title a {
+    color: #171f5d;
+
+    text-decoration: none;
+}
+
+
+.basura-title i {
+    font-style: italic;
+}
+
+
+.basura-arrow {
+    display: inline-block;
+
+    margin: 0 4px;
+}
+
+
+/* =========================================
+   DESCRIPCIÓN
+========================================= */
+
+.basura-description {
+    width: min(900px, 100%);
+
+    margin: 35px 0 0;
+
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 23px;
+
+    line-height: 1.15;
+
+    font-weight: 550;
+}
+
+
+/* =========================================
+   DOWNLOAD
+========================================= */
+
+.basura-download {
+    margin: 45px 0 0;
+
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 23px;
+
+    line-height: 1.15;
+
+    font-weight: 550;
+}
+
+
+.yellow-underline {
+    position: relative;
+
+    display: inline-block;
+
+    z-index: 0;
+}
+
+
+.yellow-underline::after {
+    content: "";
+
+    position: absolute;
+
+    left: -3px;
+
+    right: -3px;
+
+    bottom: 15%;
+
+    height: 85%;
+
+    background: #FFFF00;
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   GRID — 3 COLUMNAS
+========================================= */
+
+.basura-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 2rem;
+
+    margin-top: 80px;
+}
+
+
+.basura-item {
+    width: 100%;
+
+    cursor: pointer;
+}
+
+
+.basura-item img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+
+    user-select: none;
+}
+
+
+/* =========================================
+   PIE
+========================================= */
+
+.basura-bottom {
+    width: 100%;
+
+    margin-top: 180px;
+
+    padding-bottom: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.basura-bottom a {
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    font-weight: 550;
+
+    text-decoration: none;
+}
+
+
+.basura-bottom a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MÓVIL
+========================================= */
+
+@media (max-width: 700px) {
+
+    .basura-page {
+        padding: 20px 18px 8rem;
+    }
+
+
+    .basura-title {
+        font-size: 24px;
+    }
+
+
+    .basura-description {
+        margin-top: 30px;
+
+        font-size: 18px;
+    }
+
+
+    .basura-download {
+        margin-top: 35px;
+
+        font-size: 18px;
+    }
+
+
+    .basura-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 0.7rem;
+
+        margin-top: 50px;
+    }
+
+
+    .basura-bottom {
+        margin-top: 7rem;
+
+        flex-direction: column;
+
+        gap: 25px;
+    }
+
+
+    .basura-bottom a {
+        font-size: 20px;
+    }
+
+}
