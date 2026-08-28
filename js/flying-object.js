@@ -1,4 +1,3 @@
-```js
 (() => {
 
     const container = document.querySelector('.flying-object');
@@ -14,16 +13,6 @@
     container.appendChild(bee);
 
 
-    /*
-     * Precargamos la imagen espejada.
-     * Así el navegador ya la tiene disponible
-     * cuando sea necesaria.
-     */
-
-    const mirrorImage = new Image();
-    mirrorImage.src = 'images/ABEJA01_FLY_MIRROR.png';
-
-
     function random(min, max) {
         return Math.random() * (max - min) + min;
     }
@@ -34,9 +23,21 @@
         const width = window.innerWidth;
         const height = window.innerHeight;
 
+        /*
+         * Margen suficiente para que la abeja
+         * quede completamente fuera de la pantalla
+         * al empezar y terminar.
+         */
         const beeSize = 90;
         const margin = beeSize * 2;
 
+
+        /*
+         * Elegimos aleatoriamente uno de los cuatro
+         * sentidos principales.
+         *
+         * Todos los vuelos tienen componente diagonal.
+         */
 
         const direction = Math.floor(random(0, 4));
 
@@ -58,8 +59,6 @@
             endX = width + margin;
             endY = random(0, height);
 
-            bee.src = 'images/ABEJA01_FLY_MIRROR.png';
-
         }
 
 
@@ -74,8 +73,6 @@
 
             endX = -margin;
             endY = random(0, height);
-
-            bee.src = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -92,8 +89,6 @@
             endX = random(0, width);
             endY = height + margin;
 
-            bee.src = 'images/ABEJA01_FLY.png';
-
         }
 
 
@@ -109,13 +104,18 @@
             endX = random(0, width);
             endY = -margin;
 
-            bee.src = 'images/ABEJA01_FLY.png';
-
         }
 
 
         /*
          * ORIENTACIÓN FIJA
+         *
+         * La abeja NO gira siguiendo la trayectoria.
+         *
+         * 0   = orientación original
+         * 90  = giro 90º
+         * 180 = giro 180º
+         * 270 = giro 270º
          */
 
         const fixedRotation = 0;
@@ -123,13 +123,16 @@
 
         /*
          * Duración del vuelo.
+         *
+         * Menor número = más rápida.
          */
 
         const duration = random(7, 12);
 
 
         /*
-         * POSICIÓN INICIAL
+         * Colocamos la abeja en el punto inicial
+         * sin transición.
          */
 
         bee.style.transition = 'none';
@@ -138,11 +141,16 @@
             `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
+        /*
+         * Forzamos al navegador a aplicar
+         * la posición inicial antes de empezar.
+         */
+
         bee.offsetHeight;
 
 
         /*
-         * COMIENZA EL VUELO
+         * Comienza el vuelo.
          */
 
         bee.style.transition =
@@ -153,17 +161,26 @@
 
 
         /*
-         * FINAL DEL VUELO
+         * Esperamos al final REAL de la transición.
+         *
+         * Esto es más fiable que usar un setTimeout
+         * exactamente igual a la duración.
          */
 
         const onTransitionEnd = (event) => {
 
             if (event.propertyName !== 'transform') return;
 
+
             bee.removeEventListener(
                 'transitionend',
                 onTransitionEnd
             );
+
+
+            /*
+             * Pausa aleatoria antes del siguiente vuelo.
+             */
 
             bee.style.transition = 'none';
 
@@ -186,6 +203,9 @@
 
     /*
      * Primer vuelo.
+     *
+     * Esperamos 2 segundos antes de que
+     * aparezca la primera abeja.
      */
 
     setTimeout(() => {
@@ -196,4 +216,3 @@
 
 
 })();
-```
