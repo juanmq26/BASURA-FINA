@@ -1041,7 +1041,7 @@ body {
 .drawing-modal-box {
     position: relative;
 
-    width: min(700px, 85vw);
+    width: min(500px, 85vw);
 
     max-height: 90vh;
 
@@ -1172,7 +1172,7 @@ body {
 .drawing-modal-info {
     max-width: 500px;
 
-    margin-top: 18px;
+    margin-top: 45px;
 
     color: #171f5d;
 
