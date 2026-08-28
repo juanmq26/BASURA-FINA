@@ -11,6 +11,20 @@
     bee.className = 'flying-bee';
     bee.alt = '';
 
+    /*
+     * Estos estilos aseguran que la abeja
+     * no quede oculta por ningún CSS externo.
+     */
+
+    bee.style.position = 'fixed';
+    bee.style.width = '90px';
+    bee.style.height = 'auto';
+    bee.style.zIndex = '999999';
+    bee.style.pointerEvents = 'none';
+    bee.style.display = 'block';
+    bee.style.opacity = '1';
+    bee.style.visibility = 'visible';
+
     container.appendChild(bee);
 
 
@@ -35,6 +49,10 @@
         let endY;
 
 
+        /*
+         * IZQUIERDA → DERECHA
+         */
+
         if (direction === 0) {
 
             startX = -margin;
@@ -45,6 +63,10 @@
 
         }
 
+
+        /*
+         * DERECHA → IZQUIERDA
+         */
 
         else if (direction === 1) {
 
@@ -57,6 +79,10 @@
         }
 
 
+        /*
+         * ARRIBA → ABAJO
+         */
+
         else if (direction === 2) {
 
             startX = random(0, width);
@@ -67,6 +93,10 @@
 
         }
 
+
+        /*
+         * ABAJO → ARRIBA
+         */
 
         else {
 
@@ -79,10 +109,18 @@
         }
 
 
+        /*
+         * Rotación fija.
+         */
+
         const fixedRotation = 90;
 
         const duration = random(7, 12);
 
+
+        /*
+         * POSICIÓN INICIAL
+         */
 
         bee.style.transition = 'none';
 
@@ -90,8 +128,17 @@
             `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
+        /*
+         * Forzamos al navegador a registrar
+         * la posición inicial.
+         */
+
         bee.offsetHeight;
 
+
+        /*
+         * VUELO
+         */
 
         bee.style.transition =
             `transform ${duration}s linear`;
@@ -99,6 +146,10 @@
         bee.style.transform =
             `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
 
+
+        /*
+         * SIGUIENTE VUELO
+         */
 
         const onTransitionEnd = (event) => {
 
@@ -127,6 +178,10 @@
 
     }
 
+
+    /*
+     * PRIMER VUELO
+     */
 
     setTimeout(() => {
 
