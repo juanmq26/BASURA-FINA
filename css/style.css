@@ -767,3 +767,21 @@ body {
     padding-top: 120px !important;
     padding-bottom: 25px !important;
 }
+/* =========================================
+   PEOPLE — ESTRUCTURA DE PÁGINA
+========================================= */
+
+.people-layout {
+    min-height: 100vh;
+    padding-top: 180px;
+}
+
+.people-layout .people-instructions {
+    margin-top: 160px;
+}
+
+.people-layout .people-bottom {
+    margin-top: auto;
+    padding-top: 160px;
+    padding-bottom: 25px;
+}
