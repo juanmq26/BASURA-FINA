@@ -1,5 +1,5 @@
-```js id="g2t6vc"
-(() => {
+```js
+document.addEventListener('DOMContentLoaded', () => {
 
     const container = document.querySelector('.flying-object');
 
@@ -36,10 +36,6 @@
         let endY;
 
 
-        /*
-         * IZQUIERDA → DERECHA
-         */
-
         if (direction === 0) {
 
             startX = -margin;
@@ -49,11 +45,6 @@
             endY = random(0, height);
 
         }
-
-
-        /*
-         * DERECHA → IZQUIERDA
-         */
 
         else if (direction === 1) {
 
@@ -65,11 +56,6 @@
 
         }
 
-
-        /*
-         * ARRIBA → ABAJO
-         */
-
         else if (direction === 2) {
 
             startX = random(0, width);
@@ -79,11 +65,6 @@
             endY = height + margin;
 
         }
-
-
-        /*
-         * ABAJO → ARRIBA
-         */
 
         else {
 
@@ -96,23 +77,10 @@
         }
 
 
-        /*
-         * ORIENTACIÓN FIJA
-         */
-
         const fixedRotation = 90;
-
-
-        /*
-         * Duración del vuelo
-         */
 
         const duration = random(7, 12);
 
-
-        /*
-         * POSICIÓN INICIAL
-         */
 
         bee.style.transition = 'none';
 
@@ -123,20 +91,12 @@
         bee.offsetHeight;
 
 
-        /*
-         * COMIENZA EL VUELO
-         */
-
         bee.style.transition =
             `transform ${duration}s linear`;
 
         bee.style.transform =
             `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
 
-
-        /*
-         * FINAL DEL VUELO
-         */
 
         const onTransitionEnd = (event) => {
 
@@ -172,12 +132,7 @@
      * Empieza inmediatamente.
      */
 
-    setTimeout(() => {
+    flyBee();
 
-        flyBee();
-
-    }, 0);
-
-
-})();
+});
 ```
