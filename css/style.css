@@ -699,3 +699,40 @@ body {
     }
 
 }
+/* =========================================
+   PEOPLE — INSTRUCCIONES
+========================================= */
+
+.people-instructions {
+    width: 100%;
+
+    margin-top: 70px;
+}
+
+
+.people-instructions h2 {
+    margin: 0;
+
+    padding: 0;
+
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 36px;
+
+    line-height: 1.15;
+
+    font-weight: 550;
+}
+
+
+.green-underline {
+    text-decoration-line: underline;
+
+    text-decoration-color: #67B656;
+
+    text-decoration-thickness: 3px;
+
+    text-underline-offset: 3px;
+}
