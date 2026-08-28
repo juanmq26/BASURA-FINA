@@ -6,20 +6,10 @@
 
     const bee = document.createElement('img');
 
-    bee.src = 'images/ABEJA01_FLY.png';
     bee.className = 'flying-bee';
     bee.alt = '';
 
     container.appendChild(bee);
-
-
-    const mirror = document.createElement('img');
-
-    mirror.src = 'https://github.com/juanmq26/BASURA-FINA/blob/main/images/ABEJA01_FLY_MIRROR.png?raw=true';
-    mirror.className = 'flying-bee';
-    mirror.alt = '';
-
-    container.appendChild(mirror);
 
 
     function random(min, max) {
@@ -43,9 +33,12 @@
         let endX;
         let endY;
 
+        let image;
+
 
         /*
          * IZQUIERDA → DERECHA
+         * IMAGEN ESPEJADA
          */
 
         if (direction === 0) {
@@ -56,14 +49,14 @@
             endX = width + margin;
             endY = random(0, height);
 
-            bee.style.display = 'none';
-            mirror.style.display = 'block';
+            image = 'https://github.com/juanmq26/BASURA-FINA/blob/main/images/ABEJA01_FLY_MIRROR.png?raw=true';
 
         }
 
 
         /*
          * DERECHA → IZQUIERDA
+         * IMAGEN ORIGINAL
          */
 
         else if (direction === 1) {
@@ -74,8 +67,7 @@
             endX = -margin;
             endY = random(0, height);
 
-            bee.style.display = 'block';
-            mirror.style.display = 'none';
+            image = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -92,8 +84,7 @@
             endX = random(0, width);
             endY = height + margin;
 
-            bee.style.display = 'block';
-            mirror.style.display = 'none';
+            image = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -110,111 +101,100 @@
             endX = random(0, width);
             endY = -margin;
 
-            bee.style.display = 'block';
-            mirror.style.display = 'none';
+            image = 'images/ABEJA01_FLY.png';
 
         }
 
 
         /*
-         * ORIENTACIÓN FIJA
+         * Ponemos la imagen correspondiente.
          */
 
-        const fixedRotation = 0;
+        bee.src = image;
 
 
         /*
-         * Duración del vuelo.
+         * Esperamos a que la imagen esté cargada
+         * antes de empezar el movimiento.
          */
 
-        const duration = random(7, 12);
+        const startFlight = () => {
+
+            const fixedRotation = 0;
+
+            const duration = random(7, 12);
 
 
-        /*
-         * Movimiento de la abeja normal
-         */
-
-        bee.style.transition = 'none';
-
-        bee.style.transform =
-            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
-
-
-        /*
-         * Movimiento de la abeja espejo
-         */
-
-        mirror.style.transition = 'none';
-
-        mirror.style.transform =
-            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
-
-
-        bee.offsetHeight;
-        mirror.offsetHeight;
-
-
-        /*
-         * Comienza el vuelo
-         */
-
-        bee.style.transition =
-            `transform ${duration}s linear`;
-
-        mirror.style.transition =
-            `transform ${duration}s linear`;
-
-
-        bee.style.transform =
-            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
-
-        mirror.style.transform =
-            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
-
-
-        /*
-         * Esperamos al final del vuelo
-         */
-
-        const onTransitionEnd = (event) => {
-
-            if (event.propertyName !== 'transform') return;
-
-
-            bee.removeEventListener(
-                'transitionend',
-                onTransitionEnd
-            );
-
-
-            mirror.removeEventListener(
-                'transitionend',
-                onTransitionEnd
-            );
-
+            /*
+             * Posición inicial.
+             */
 
             bee.style.transition = 'none';
-            mirror.style.transition = 'none';
+
+            bee.style.transform =
+                `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
-            setTimeout(() => {
+            bee.offsetHeight;
 
-                flyBee();
 
-            }, random(1500, 5000));
+            /*
+             * Comienza el vuelo.
+             */
+
+            bee.style.transition =
+                `transform ${duration}s linear`;
+
+            bee.style.transform =
+                `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
+
+
+            /*
+             * Final del vuelo.
+             */
+
+            const onTransitionEnd = (event) => {
+
+                if (event.propertyName !== 'transform') return;
+
+                bee.removeEventListener(
+                    'transitionend',
+                    onTransitionEnd
+                );
+
+                bee.style.transition = 'none';
+
+                setTimeout(() => {
+
+                    flyBee();
+
+                }, random(1500, 5000));
+
+            };
+
+
+            bee.addEventListener(
+                'transitionend',
+                onTransitionEnd
+            );
 
         };
 
 
-        bee.addEventListener(
-            'transitionend',
-            onTransitionEnd
-        );
+        /*
+         * Si ya está cargada, empezamos directamente.
+         * Si no, esperamos.
+         */
 
-        mirror.addEventListener(
-            'transitionend',
-            onTransitionEnd
-        );
+        if (bee.complete) {
+
+            startFlight();
+
+        } else {
+
+            bee.onload = startFlight;
+
+        }
 
     }
 
