@@ -1,4 +1,4 @@
-aMIRA ESTO FUNCIONA: (() => {
+(() => {
 
     const container = document.querySelector('.flying-object');
 
