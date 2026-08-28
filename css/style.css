@@ -1002,3 +1002,119 @@ body {
 
     text-align: center;
 }
+/* =========================================
+   DRAWING MODAL — VISIBILITY
+========================================= */
+
+.drawing-modal {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    z-index: 9999 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    background: rgba(23, 31, 93, 0.35);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+.drawing-modal.is-open {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+}
+
+
+.drawing-modal-box {
+    position: relative;
+
+    width: min(700px, 85vw);
+
+    max-height: 90vh;
+
+    background: white;
+
+    padding: 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+.drawing-modal-box img {
+    display: block;
+
+    max-width: 100%;
+
+    max-height: 65vh;
+
+    width: auto;
+
+    height: auto;
+}
+
+
+.drawing-modal-close {
+    position: absolute;
+
+    top: 8px;
+
+    left: 12px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #171f5d;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    font-size: 32px;
+
+    cursor: pointer;
+}
+
+
+.drawing-modal-downloads {
+    display: flex;
+
+    gap: 25px;
+
+    margin-top: 20px;
+}
+
+
+.drawing-modal-downloads a {
+    color: #ef73b6;
+
+    font-size: 25px;
+
+    font-weight: 550;
+
+    text-decoration: none;
+}
+
+
+.drawing-modal-info {
+    margin: 12px 0 0;
+
+    color: #171f5d;
+
+    font-size: 15px;
+}
