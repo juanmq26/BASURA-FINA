@@ -206,6 +206,8 @@
         }
 
     </script>
+
+    
 <script>
 
     const fly = document.querySelector(".header-fly");
@@ -226,6 +228,8 @@
 
         fly.style.cursor = "grabbing";
 
+        event.preventDefault();
+
     });
 
 
@@ -243,6 +247,8 @@
 
 
     document.addEventListener("mouseup", function () {
+
+        if (!dragging) return;
 
         dragging = false;
 
