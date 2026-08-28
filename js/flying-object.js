@@ -6,7 +6,7 @@ aMIRA ESTO FUNCIONA: (() => {
 
     const bee = document.createElement('img');
 
-    bee.src = 'images/ABEJA01_FLY.png';
+    bee.src = 'images/ABEJA01_FLY_MIRROR.png';
     bee.className = 'flying-bee';
     bee.alt = '';
 
@@ -41,8 +41,6 @@ aMIRA ESTO FUNCIONA: (() => {
 
         const direction = Math.floor(random(0, 4));
 
-        if (direction === 0) {
-    bee.src = 'images/ABEJA01_FLY_MIRROR.png';
 }
 
         let startX;
