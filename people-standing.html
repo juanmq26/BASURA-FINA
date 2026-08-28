@@ -411,28 +411,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <footer class="people-bottom">
 
-
-            <a
-                href="#"
-                class="people-top-link"
-            >
-                crawl to top >>>
-            </a>
-
-
-            <a
-                href="index.html"
-                class="people-home-link"
-            >
-                zzzzz!!! fly home
-            </a>
+    <a
+        href="#"
+        class="people-top-link"
+    >
+        back to top >>>
+    </a>
 
 
-        </footer>
+    <div class="site-clock">
+
+        <div id="clock-time"></div>
+
+        <div id="clock-date"></div>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="people-home-link"
+    >
+        zzzzz!!! fly home
+    </a>
+
+</footer>
 
 
     </main>
 
+<script>
+
+    function updateClock() {
+
+        const now = new Date();
+
+        const time = now.toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+        const date = now.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        });
+
+        document.getElementById("clock-time").textContent = time;
+
+        document.getElementById("clock-date").textContent = date;
+
+    }
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+
+</script>    
 
 </body>
 
