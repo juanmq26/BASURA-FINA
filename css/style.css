@@ -1595,3 +1595,26 @@ body {
 .header-fly:active {
     cursor: grabbing;
 }
+/* =========================================
+   GLOBAL CLOCK
+========================================= */
+
+.site-clock {
+    position: fixed;
+    left: 50%;
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    color: #EF73B6;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    line-height: 1.2;
+    text-align: center;
+
+    white-space: nowrap;
+
+    z-index: 1000;
+}
