@@ -1,4 +1,4 @@
-```js id="q5s7kp"
+```js
 (() => {
 
     const container = document.querySelector('.flying-object');
@@ -12,6 +12,12 @@
     bee.alt = '';
 
     container.appendChild(bee);
+
+    /*
+     * La abeja empieza invisible.
+     * Así no aparece congelada al cargar la página.
+     */
+    bee.style.visibility = 'hidden';
 
 
     function random(min, max) {
@@ -27,6 +33,16 @@
         const beeSize = 90;
         const margin = beeSize * 2;
 
+
+        /*
+         * Elegimos uno de los cuatro sentidos.
+         *
+         * 0 = izquierda → derecha
+         * 1 = derecha → izquierda
+         * 2 = arriba → abajo
+         * 3 = abajo → arriba
+         */
+
         const direction = Math.floor(random(0, 4));
 
         let startX;
@@ -39,7 +55,8 @@
 
         /*
          * IZQUIERDA → DERECHA
-         * PNG espejado.
+         *
+         * La abeja va en espejo.
          */
 
         if (direction === 0) {
@@ -57,7 +74,8 @@
 
         /*
          * DERECHA → IZQUIERDA
-         * PNG original.
+         *
+         * La abeja mantiene el PNG original.
          */
 
         else if (direction === 1) {
@@ -107,16 +125,27 @@
         }
 
 
+        /*
+         * Orientación fija.
+         */
+
         const fixedRotation = 90;
 
         const scaleX = flip ? -1 : 1;
+
+
+        /*
+         * Duración del vuelo.
+         */
 
         const duration = random(7, 12);
 
 
         /*
          * POSICIÓN INICIAL
-         * Siempre empieza FUERA de la pantalla.
+         *
+         * La abeja se coloca directamente
+         * fuera de la pantalla.
          */
 
         bee.style.transition = 'none';
@@ -125,11 +154,24 @@
             `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg) scaleX(${scaleX})`;
 
 
+        /*
+         * Ahora ya podemos mostrarla,
+         * porque está fuera de la pantalla.
+         */
+
+        bee.style.visibility = 'visible';
+
+
+        /*
+         * Forzamos al navegador a registrar
+         * la posición inicial.
+         */
+
         bee.offsetHeight;
 
 
         /*
-         * VUELO
+         * COMIENZA EL VUELO
          */
 
         bee.style.transition =
@@ -140,17 +182,23 @@
 
 
         /*
-         * FINAL DEL VUELO
+         * Esperamos al final REAL de la transición.
          */
 
         const onTransitionEnd = (event) => {
 
             if (event.propertyName !== 'transform') return;
 
+
             bee.removeEventListener(
                 'transitionend',
                 onTransitionEnd
             );
+
+
+            /*
+             * Pausa antes del siguiente vuelo.
+             */
 
             bee.style.transition = 'none';
 
