@@ -118,7 +118,7 @@
          * 270 = giro 270º
          */
 
-        const fixedRotation = 90;
+        const fixedRotation = 0;
 
 
         /*
@@ -212,7 +212,7 @@
 
         flyBee();
 
-    }, 2000);
+    }, 1);
 
 
 })();
