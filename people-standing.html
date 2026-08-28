@@ -19,7 +19,105 @@
 
 </head>
 
+<!-- VISOR DE DIBUJO -->
 
+<div class="drawing-modal" id="drawing-modal">
+
+    <div class="drawing-modal-box">
+
+        <button class="drawing-modal-close" id="drawing-modal-close">
+            ×
+        </button>
+
+        <img
+            id="drawing-modal-image"
+            src=""
+            alt=""
+        >
+
+        <div class="drawing-modal-downloads">
+
+            <a href="#" id="drawing-dwg">
+                DWG
+            </a>
+
+            <a href="#" id="drawing-png">
+                PNG
+            </a>
+
+        </div>
+
+        <p class="drawing-modal-info">
+            Download and enjoy!!!
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    const modal =
+        document.getElementById("drawing-modal");
+
+    const modalImage =
+        document.getElementById("drawing-modal-image");
+
+    const closeButton =
+        document.getElementById("drawing-modal-close");
+
+
+    const galleryImages =
+        document.querySelectorAll(".people-item img");
+
+
+    galleryImages.forEach(function(image) {
+
+        image.addEventListener("click", function() {
+
+            modalImage.src = image.src;
+
+            modalImage.alt = image.alt;
+
+            modal.classList.add("is-open");
+
+        });
+
+    });
+
+
+    closeButton.addEventListener("click", function() {
+
+        modal.classList.remove("is-open");
+
+    });
+
+
+    modal.addEventListener("click", function(event) {
+
+        if (event.target === modal) {
+
+            modal.classList.remove("is-open");
+
+        }
+
+    });
+
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+
+            modal.classList.remove("is-open");
+
+        }
+
+    });
+
+</script>
+
+    
 <body>
 
 
