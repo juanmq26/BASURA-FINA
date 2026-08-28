@@ -1142,3 +1142,45 @@ body {
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
 }
+/* =========================================
+   DRAWING MODAL — AJUSTES 2
+========================================= */
+
+/* X */
+.drawing-modal-close {
+    font-size: 42px;
+
+    text-decoration-thickness: 4px;
+    text-underline-offset: 3px;
+}
+
+
+/* DESCARGAS */
+.drawing-modal-downloads {
+    gap: 70px;
+}
+
+
+.drawing-modal-downloads a {
+    font-size: 25px;
+
+    text-transform: lowercase;
+}
+
+
+/* TEXTO INFERIOR */
+.drawing-modal-info {
+    max-width: 500px;
+
+    margin-top: 18px;
+
+    color: #171f5d;
+
+    font-size: 25px;
+
+    line-height: 1.05;
+
+    font-weight: 550;
+
+    text-align: center;
+}
