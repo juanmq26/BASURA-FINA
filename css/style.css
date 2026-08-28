@@ -824,3 +824,18 @@ body {
 .people-layout {
     padding-top: 180px;
 }
+/* =========================================
+   PEOPLE — POSICIÓN FIJA DEL ENCABEZADO
+========================================= */
+
+.people-page {
+    padding-top: 0 !important;
+}
+
+.people-page .people-title {
+    margin-top: 180px !important;
+}
+
+.people-page .people-navigation {
+    margin-top: 25px !important;
+}
