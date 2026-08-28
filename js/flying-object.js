@@ -4,7 +4,6 @@
 
     if (!container) return;
 
-
     const bee = document.createElement('img');
 
     bee.src = 'images/ABEJA01_FLY.png';
@@ -12,6 +11,15 @@
     bee.alt = '';
 
     container.appendChild(bee);
+
+
+    const mirror = document.createElement('img');
+
+    mirror.src = 'https://github.com/juanmq26/BASURA-FINA/blob/main/images/ABEJA01_FLY_MIRROR.png?raw=true';
+    mirror.className = 'flying-bee';
+    mirror.alt = '';
+
+    container.appendChild(mirror);
 
 
     function random(min, max) {
@@ -38,7 +46,6 @@
 
         /*
          * IZQUIERDA → DERECHA
-         * La abeja se espeja.
          */
 
         if (direction === 0) {
@@ -49,14 +56,14 @@
             endX = width + margin;
             endY = random(0, height);
 
-            bee.style.transform = 'scaleX(-1)';
+            bee.style.display = 'none';
+            mirror.style.display = 'block';
 
         }
 
 
         /*
          * DERECHA → IZQUIERDA
-         * Imagen original.
          */
 
         else if (direction === 1) {
@@ -67,7 +74,8 @@
             endX = -margin;
             endY = random(0, height);
 
-            bee.style.transform = 'scaleX(1)';
+            bee.style.display = 'block';
+            mirror.style.display = 'none';
 
         }
 
@@ -84,7 +92,8 @@
             endX = random(0, width);
             endY = height + margin;
 
-            bee.style.transform = 'scaleX(1)';
+            bee.style.display = 'block';
+            mirror.style.display = 'none';
 
         }
 
@@ -101,7 +110,8 @@
             endX = random(0, width);
             endY = -margin;
 
-            bee.style.transform = 'scaleX(1)';
+            bee.style.display = 'block';
+            mirror.style.display = 'none';
 
         }
 
@@ -121,45 +131,71 @@
 
 
         /*
-         * IMPORTANTE:
-         * guardamos el espejo en el IMG
-         * y el movimiento en el contenedor.
+         * Movimiento de la abeja normal
          */
 
-        container.style.transition = 'none';
+        bee.style.transition = 'none';
 
-        container.style.transform =
+        bee.style.transform =
             `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
-        container.offsetHeight;
+        /*
+         * Movimiento de la abeja espejo
+         */
+
+        mirror.style.transition = 'none';
+
+        mirror.style.transform =
+            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
+
+
+        bee.offsetHeight;
+        mirror.offsetHeight;
 
 
         /*
-         * Comienza el vuelo.
+         * Comienza el vuelo
          */
 
-        container.style.transition =
+        bee.style.transition =
             `transform ${duration}s linear`;
 
-        container.style.transform =
+        mirror.style.transition =
+            `transform ${duration}s linear`;
+
+
+        bee.style.transform =
+            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
+
+        mirror.style.transform =
             `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
 
 
         /*
-         * Cuando termina.
+         * Esperamos al final del vuelo
          */
 
         const onTransitionEnd = (event) => {
 
             if (event.propertyName !== 'transform') return;
 
-            container.removeEventListener(
+
+            bee.removeEventListener(
                 'transitionend',
                 onTransitionEnd
             );
 
-            container.style.transition = 'none';
+
+            mirror.removeEventListener(
+                'transitionend',
+                onTransitionEnd
+            );
+
+
+            bee.style.transition = 'none';
+            mirror.style.transition = 'none';
+
 
             setTimeout(() => {
 
@@ -170,7 +206,12 @@
         };
 
 
-        container.addEventListener(
+        bee.addEventListener(
+            'transitionend',
+            onTransitionEnd
+        );
+
+        mirror.addEventListener(
             'transitionend',
             onTransitionEnd
         );
