@@ -1,4 +1,4 @@
-```js
+```js id="g2t6vc"
 (() => {
 
     const container = document.querySelector('.flying-object');
@@ -12,12 +12,6 @@
     bee.alt = '';
 
     container.appendChild(bee);
-
-    /*
-     * Ocultamos la abeja mientras esperamos
-     * los 2 segundos iniciales.
-     */
-    bee.style.visibility = 'hidden';
 
 
     function random(min, max) {
@@ -126,14 +120,6 @@
             `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
-        /*
-         * Ahora ya está fuera de pantalla,
-         * así que podemos mostrarla.
-         */
-
-        bee.style.visibility = 'visible';
-
-
         bee.offsetHeight;
 
 
@@ -182,13 +168,15 @@
 
     /*
      * Primer vuelo.
+     *
+     * Empieza inmediatamente.
      */
 
     setTimeout(() => {
 
         flyBee();
 
-    }, 2000);
+    }, 0);
 
 
 })();
