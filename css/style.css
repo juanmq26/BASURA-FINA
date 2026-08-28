@@ -729,10 +729,7 @@ body {
 
 .green-underline {
     text-decoration-line: underline;
-
     text-decoration-color: #67B656;
-
     text-decoration-thickness: 3px;
-
     text-underline-offset: 3px;
 }
