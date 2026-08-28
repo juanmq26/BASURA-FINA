@@ -29,7 +29,6 @@
          * quede completamente fuera de la pantalla
          * al empezar y terminar.
          */
-
         const beeSize = 90;
         const margin = beeSize * 2;
 
@@ -37,6 +36,8 @@
         /*
          * Elegimos aleatoriamente uno de los cuatro
          * sentidos principales.
+         *
+         * Todos los vuelos tienen componente diagonal.
          */
 
         const direction = Math.floor(random(0, 4));
@@ -49,8 +50,6 @@
 
         /*
          * IZQUIERDA → DERECHA
-         *
-         * Usamos la imagen espejada.
          */
 
         if (direction === 0) {
@@ -61,15 +60,11 @@
             endX = width + margin;
             endY = random(0, height);
 
-            bee.src = 'images/ABEJA01_FLY_MIRROR.png';
-
         }
 
 
         /*
          * DERECHA → IZQUIERDA
-         *
-         * Usamos la imagen original.
          */
 
         else if (direction === 1) {
@@ -79,8 +74,6 @@
 
             endX = -margin;
             endY = random(0, height);
-
-            bee.src = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -97,8 +90,6 @@
             endX = random(0, width);
             endY = height + margin;
 
-            bee.src = 'images/ABEJA01_FLY.png';
-
         }
 
 
@@ -113,8 +104,6 @@
 
             endX = random(0, width);
             endY = -margin;
-
-            bee.src = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -134,7 +123,8 @@
 
 
         /*
-         * POSICIÓN INICIAL
+         * Colocamos la abeja en el punto inicial
+         * sin transición.
          */
 
         bee.style.transition = 'none';
@@ -145,14 +135,14 @@
 
         /*
          * Forzamos al navegador a aplicar
-         * la posición inicial.
+         * la posición inicial antes de empezar.
          */
 
         bee.offsetHeight;
 
 
         /*
-         * COMIENZA EL VUELO
+         * Comienza el vuelo.
          */
 
         bee.style.transition =
