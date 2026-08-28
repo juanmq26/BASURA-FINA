@@ -616,8 +616,9 @@ body {
 .people-bottom {
     width: 100%;
 
-    margin-top: 180px;
+    margin-top: auto;
 
+    padding-top: 180px;
     padding-bottom: 25px;
 
     display: flex;
