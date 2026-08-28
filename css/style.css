@@ -490,11 +490,13 @@ body {
     width: 100%;
     min-height: 100vh;
 
-    padding: 170px 35px 10rem;
+    padding: 120px 35px 10rem;
 
     color: #171f5d;
-}
 
+    display: flex;
+    flex-direction: column;
+}
 
 .people-title {
     margin: 0;
@@ -612,15 +614,14 @@ body {
 ========================================= */
 
 .people-bottom {
-    width: 100%;
+    margin-top: auto;
 
-    margin-top: 10rem;
+    padding-top: 80px;
+    padding-bottom: 25px;
 
     display: flex;
-
     justify-content: space-between;
-
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 
@@ -706,7 +707,7 @@ body {
 .people-instructions {
     width: 100%;
 
-    margin-top: 70px;
+    margin-top: 140px;
 }
 
 
