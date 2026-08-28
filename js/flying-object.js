@@ -5,13 +5,37 @@
 
     if (!container) return;
 
+
+    /*
+     * Contenedor que se encarga SOLO del movimiento.
+     */
+
+    const wrapper = document.createElement('div');
+
+    wrapper.style.position = 'fixed';
+    wrapper.style.left = '0';
+    wrapper.style.top = '0';
+    wrapper.style.width = '0';
+    wrapper.style.height = '0';
+    wrapper.style.zIndex = '999999';
+    wrapper.style.pointerEvents = 'none';
+
+
+    /*
+     * Imagen de la abeja.
+     */
+
     const bee = document.createElement('img');
 
     bee.src = 'images/ABEJA01_FLY.png';
     bee.className = 'flying-bee';
     bee.alt = '';
 
-    container.appendChild(bee);
+    bee.style.display = 'block';
+
+
+    wrapper.appendChild(bee);
+    container.appendChild(wrapper);
 
 
     function random(min, max) {
@@ -26,9 +50,9 @@
 
         /*
          * Margen suficiente para que la abeja
-         * quede completamente fuera de la pantalla
-         * al empezar y terminar.
+         * quede completamente fuera de la pantalla.
          */
+
         const beeSize = 90;
         const margin = beeSize * 2;
 
@@ -36,8 +60,6 @@
         /*
          * Elegimos aleatoriamente uno de los cuatro
          * sentidos principales.
-         *
-         * Todos los vuelos tienen componente diagonal.
          */
 
         const direction = Math.floor(random(0, 4));
@@ -47,16 +69,13 @@
         let endX;
         let endY;
 
-        /*
-         * NUEVO:
-         * false = imagen original
-         * true = imagen en espejo
-         */
         let flip = false;
 
 
         /*
          * IZQUIERDA → DERECHA
+         *
+         * La imagen se invierte.
          */
 
         if (direction === 0) {
@@ -67,9 +86,6 @@
             endX = width + margin;
             endY = random(0, height);
 
-            /*
-             * Espejamos la abeja.
-             */
             flip = true;
 
         }
@@ -77,6 +93,8 @@
 
         /*
          * DERECHA → IZQUIERDA
+         *
+         * La imagen queda original.
          */
 
         else if (direction === 1) {
@@ -87,9 +105,6 @@
             endX = -margin;
             endY = random(0, height);
 
-            /*
-             * PNG original.
-             */
             flip = false;
 
         }
@@ -126,7 +141,7 @@
 
 
         /*
-         * ORIENTACIÓN FIJA
+         * ORIENTACIÓN FIJA.
          */
 
         const fixedRotation = 0;
@@ -140,46 +155,46 @@
 
 
         /*
-         * NUEVO:
-         * -1 = espejo
-         *  1 = original
+         * El espejo se aplica SOLO a la imagen.
+         * El movimiento del wrapper no se toca.
          */
 
-        const scaleX = flip ? -1 : 1;
+        bee.style.transform = flip
+            ? 'scaleX(-1)'
+            : 'scaleX(1)';
 
 
         /*
-         * Colocamos la abeja en el punto inicial
-         * sin transición.
+         * POSICIÓN INICIAL
          */
 
-        bee.style.transition = 'none';
+        wrapper.style.transition = 'none';
 
-        bee.style.transform =
-            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg) scaleX(${scaleX})`;
+        wrapper.style.transform =
+            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
         /*
          * Forzamos al navegador a aplicar
-         * la posición inicial antes de empezar.
+         * la posición inicial.
          */
 
-        bee.offsetHeight;
+        wrapper.offsetHeight;
 
 
         /*
-         * Comienza el vuelo.
+         * COMIENZA EL VUELO.
          */
 
-        bee.style.transition =
+        wrapper.style.transition =
             `transform ${duration}s linear`;
 
-        bee.style.transform =
-            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg) scaleX(${scaleX})`;
+        wrapper.style.transform =
+            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
 
 
         /*
-         * Esperamos al final REAL de la transición.
+         * FINAL DEL VUELO.
          */
 
         const onTransitionEnd = (event) => {
@@ -187,17 +202,14 @@
             if (event.propertyName !== 'transform') return;
 
 
-            bee.removeEventListener(
+            wrapper.removeEventListener(
                 'transitionend',
                 onTransitionEnd
             );
 
 
-            /*
-             * Pausa aleatoria antes del siguiente vuelo.
-             */
+            wrapper.style.transition = 'none';
 
-            bee.style.transition = 'none';
 
             setTimeout(() => {
 
@@ -208,7 +220,7 @@
         };
 
 
-        bee.addEventListener(
+        wrapper.addEventListener(
             'transitionend',
             onTransitionEnd
         );
@@ -218,6 +230,9 @@
 
     /*
      * Primer vuelo.
+     *
+     * Mantenemos 1 ms porque sabemos
+     * que esta versión sí funciona.
      */
 
     setTimeout(() => {
