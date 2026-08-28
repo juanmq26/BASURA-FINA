@@ -1558,3 +1558,15 @@ body {
 
     stroke-linejoin: round;
 }
+.subscribe .hand-arrow {
+    width: 34px;
+    height: 23px;
+    margin: 0 0 0 2px;
+    vertical-align: middle;
+}
+
+.subscribe .hand-arrow line,
+.subscribe .hand-arrow polyline {
+    stroke: #EF73B6;
+    stroke-width: 4;
+}
