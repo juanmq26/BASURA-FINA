@@ -4,6 +4,29 @@
 
     if (!container) return;
 
+
+    const normalImage = 'images/ABEJA01_FLY.png';
+
+    const mirrorImage =
+        'https://github.com/juanmq26/BASURA-FINA/blob/main/images/ABEJA01_FLY_MIRROR.png?raw=true';
+
+
+    /*
+     * PRE-CARGAMOS LAS DOS IMÁGENES
+     */
+
+    const normal = new Image();
+    normal.src = normalImage;
+
+    const mirror = new Image();
+    mirror.src = mirrorImage;
+
+
+    /*
+     * Creamos la abeja cuando las imágenes
+     * ya están disponibles.
+     */
+
     const bee = document.createElement('img');
 
     bee.className = 'flying-bee';
@@ -22,23 +45,24 @@
         const width = window.innerWidth;
         const height = window.innerHeight;
 
+
         const beeSize = 90;
         const margin = beeSize * 2;
 
 
         const direction = Math.floor(random(0, 4));
 
+
         let startX;
         let startY;
         let endX;
         let endY;
 
-        let image;
-
 
         /*
          * IZQUIERDA → DERECHA
-         * IMAGEN ESPEJADA
+         *
+         * IMAGEN ESPEJO
          */
 
         if (direction === 0) {
@@ -49,14 +73,15 @@
             endX = width + margin;
             endY = random(0, height);
 
-            image = 'https://github.com/juanmq26/BASURA-FINA/blob/main/images/ABEJA01_FLY_MIRROR.png?raw=true';
+            bee.src = mirrorImage;
 
         }
 
 
         /*
          * DERECHA → IZQUIERDA
-         * IMAGEN ORIGINAL
+         *
+         * IMAGEN NORMAL
          */
 
         else if (direction === 1) {
@@ -67,7 +92,7 @@
             endX = -margin;
             endY = random(0, height);
 
-            image = 'images/ABEJA01_FLY.png';
+            bee.src = normalImage;
 
         }
 
@@ -84,7 +109,7 @@
             endX = random(0, width);
             endY = height + margin;
 
-            image = 'images/ABEJA01_FLY.png';
+            bee.src = normalImage;
 
         }
 
@@ -101,113 +126,116 @@
             endX = random(0, width);
             endY = -margin;
 
-            image = 'images/ABEJA01_FLY.png';
+            bee.src = normalImage;
 
         }
 
 
         /*
-         * Ponemos la imagen correspondiente.
+         * ORIENTACIÓN FIJA
          */
 
-        bee.src = image;
+        const fixedRotation = 0;
 
 
         /*
-         * Esperamos a que la imagen esté cargada
-         * antes de empezar el movimiento.
+         * Duración
          */
 
-        const startFlight = () => {
-
-            const fixedRotation = 0;
-
-            const duration = random(7, 12);
+        const duration = random(7, 12);
 
 
-            /*
-             * Posición inicial.
-             */
+        /*
+         * POSICIÓN INICIAL
+         */
 
-            bee.style.transition = 'none';
+        bee.style.transition = 'none';
 
-            bee.style.transform =
-                `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
-
-
-            bee.offsetHeight;
+        bee.style.transform =
+            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
-            /*
-             * Comienza el vuelo.
-             */
-
-            bee.style.transition =
-                `transform ${duration}s linear`;
-
-            bee.style.transform =
-                `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
+        bee.offsetHeight;
 
 
-            /*
-             * Final del vuelo.
-             */
+        /*
+         * COMIENZA EL VUELO
+         */
 
-            const onTransitionEnd = (event) => {
+        bee.style.transition =
+            `transform ${duration}s linear`;
 
-                if (event.propertyName !== 'transform') return;
-
-                bee.removeEventListener(
-                    'transitionend',
-                    onTransitionEnd
-                );
-
-                bee.style.transition = 'none';
-
-                setTimeout(() => {
-
-                    flyBee();
-
-                }, random(1500, 5000));
-
-            };
+        bee.style.transform =
+            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
 
 
-            bee.addEventListener(
+        /*
+         * FINAL
+         */
+
+        const onTransitionEnd = (event) => {
+
+            if (event.propertyName !== 'transform') return;
+
+
+            bee.removeEventListener(
                 'transitionend',
                 onTransitionEnd
             );
 
+
+            bee.style.transition = 'none';
+
+
+            setTimeout(() => {
+
+                flyBee();
+
+            }, random(1500, 5000));
+
         };
 
 
-        /*
-         * Si ya está cargada, empezamos directamente.
-         * Si no, esperamos.
-         */
-
-        if (bee.complete) {
-
-            startFlight();
-
-        } else {
-
-            bee.onload = startFlight;
-
-        }
+        bee.addEventListener(
+            'transitionend',
+            onTransitionEnd
+        );
 
     }
 
 
     /*
-     * Primer vuelo.
+     * Esperamos a que las dos imágenes
+     * estén cargadas antes del primer vuelo.
      */
 
-    setTimeout(() => {
+    Promise.all([
+
+        new Promise(resolve => {
+
+            if (normal.complete) {
+                resolve();
+            } else {
+                normal.onload = resolve;
+            }
+
+        }),
+
+        new Promise(resolve => {
+
+            if (mirror.complete) {
+                resolve();
+            } else {
+                mirror.onload = resolve;
+            }
+
+        })
+
+    ]).then(() => {
 
         flyBee();
 
-    }, 1);
+    });
 
 
 })();
