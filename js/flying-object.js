@@ -5,37 +5,13 @@
 
     if (!container) return;
 
-
-    /*
-     * Contenedor que se encarga SOLO del movimiento.
-     */
-
-    const wrapper = document.createElement('div');
-
-    wrapper.style.position = 'fixed';
-    wrapper.style.left = '0';
-    wrapper.style.top = '0';
-    wrapper.style.width = '0';
-    wrapper.style.height = '0';
-    wrapper.style.zIndex = '999999';
-    wrapper.style.pointerEvents = 'none';
-
-
-    /*
-     * Imagen de la abeja.
-     */
-
     const bee = document.createElement('img');
 
     bee.src = 'images/ABEJA01_FLY.png';
     bee.className = 'flying-bee';
     bee.alt = '';
 
-    bee.style.display = 'block';
-
-
-    wrapper.appendChild(bee);
-    container.appendChild(wrapper);
+    container.appendChild(bee);
 
 
     function random(min, max) {
@@ -50,7 +26,8 @@
 
         /*
          * Margen suficiente para que la abeja
-         * quede completamente fuera de la pantalla.
+         * quede completamente fuera de la pantalla
+         * al empezar y terminar.
          */
 
         const beeSize = 90;
@@ -69,13 +46,11 @@
         let endX;
         let endY;
 
-        let flip = false;
-
 
         /*
          * IZQUIERDA → DERECHA
          *
-         * La imagen se invierte.
+         * Usamos la imagen espejada.
          */
 
         if (direction === 0) {
@@ -86,7 +61,7 @@
             endX = width + margin;
             endY = random(0, height);
 
-            flip = true;
+            bee.src = 'images/ABEJA01_FLY_MIRROR.png';
 
         }
 
@@ -94,7 +69,7 @@
         /*
          * DERECHA → IZQUIERDA
          *
-         * La imagen queda original.
+         * Usamos la imagen original.
          */
 
         else if (direction === 1) {
@@ -105,7 +80,7 @@
             endX = -margin;
             endY = random(0, height);
 
-            flip = false;
+            bee.src = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -122,6 +97,8 @@
             endX = random(0, width);
             endY = height + margin;
 
+            bee.src = 'images/ABEJA01_FLY.png';
+
         }
 
 
@@ -137,11 +114,13 @@
             endX = random(0, width);
             endY = -margin;
 
+            bee.src = 'images/ABEJA01_FLY.png';
+
         }
 
 
         /*
-         * ORIENTACIÓN FIJA.
+         * ORIENTACIÓN FIJA
          */
 
         const fixedRotation = 0;
@@ -155,22 +134,12 @@
 
 
         /*
-         * El espejo se aplica SOLO a la imagen.
-         * El movimiento del wrapper no se toca.
-         */
-
-        bee.style.transform = flip
-            ? 'scaleX(-1)'
-            : 'scaleX(1)';
-
-
-        /*
          * POSICIÓN INICIAL
          */
 
-        wrapper.style.transition = 'none';
+        bee.style.transition = 'none';
 
-        wrapper.style.transform =
+        bee.style.transform =
             `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
 
 
@@ -179,22 +148,22 @@
          * la posición inicial.
          */
 
-        wrapper.offsetHeight;
+        bee.offsetHeight;
 
 
         /*
-         * COMIENZA EL VUELO.
+         * COMIENZA EL VUELO
          */
 
-        wrapper.style.transition =
+        bee.style.transition =
             `transform ${duration}s linear`;
 
-        wrapper.style.transform =
+        bee.style.transform =
             `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
 
 
         /*
-         * FINAL DEL VUELO.
+         * Esperamos al final REAL de la transición.
          */
 
         const onTransitionEnd = (event) => {
@@ -202,14 +171,17 @@
             if (event.propertyName !== 'transform') return;
 
 
-            wrapper.removeEventListener(
+            bee.removeEventListener(
                 'transitionend',
                 onTransitionEnd
             );
 
 
-            wrapper.style.transition = 'none';
+            /*
+             * Pausa aleatoria antes del siguiente vuelo.
+             */
 
+            bee.style.transition = 'none';
 
             setTimeout(() => {
 
@@ -220,7 +192,7 @@
         };
 
 
-        wrapper.addEventListener(
+        bee.addEventListener(
             'transitionend',
             onTransitionEnd
         );
@@ -230,9 +202,6 @@
 
     /*
      * Primer vuelo.
-     *
-     * Mantenemos 1 ms porque sabemos
-     * que esta versión sí funciona.
      */
 
     setTimeout(() => {
