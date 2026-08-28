@@ -1615,7 +1615,7 @@ body {
 .moving-worm {
     position: fixed;
 
-    bottom: 3;
+    bottom: 0;
     left: -100px;
 
     width: 150px;
