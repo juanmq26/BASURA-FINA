@@ -218,18 +218,19 @@
 
     fly.addEventListener("mousedown", function (event) {
 
-        dragging = true;
+    dragging = true;
 
-        const rect = fly.getBoundingClientRect();
+    const rect = fly.getBoundingClientRect();
 
-        offsetX = event.clientX - rect.left;
-        offsetY = event.clientY - rect.top;
+    offsetX = event.clientX - rect.left;
+    offsetY = event.clientY - rect.top;
 
-        fly.style.cursor = "grabbing";
+    fly.style.cursor = "grabbing";
 
-        event.preventDefault();
+    event.preventDefault();
+    event.stopPropagation();
 
-    });
+});
 
 
     document.addEventListener("mousemove", function (event) {
