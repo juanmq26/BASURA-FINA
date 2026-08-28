@@ -719,7 +719,7 @@ body {
 
     font-family: "Inter", Arial, Helvetica, sans-serif;
 
-    font-size: 20px;
+    font-size: 30px;
 
     line-height: 1.15;
 
@@ -740,8 +740,8 @@ body {
     left: -3px;
     right: -3px;
 
-    bottom: 8%;
-    height: 65%;
+    bottom: 15%;
+    height: 95%;
 
     background: #67B656;
 
