@@ -11,20 +11,6 @@
     bee.className = 'flying-bee';
     bee.alt = '';
 
-    /*
-     * Estos estilos aseguran que la abeja
-     * no quede oculta por ningún CSS externo.
-     */
-
-    bee.style.position = 'fixed';
-    bee.style.width = '90px';
-    bee.style.height = 'auto';
-    bee.style.zIndex = '999999';
-    bee.style.pointerEvents = 'none';
-    bee.style.display = 'block';
-    bee.style.opacity = '1';
-    bee.style.visibility = 'visible';
-
     container.appendChild(bee);
 
 
@@ -48,9 +34,17 @@
         let endX;
         let endY;
 
+        /*
+         * false = PNG original
+         * true = PNG en espejo
+         */
+
+        let flip = false;
+
 
         /*
          * IZQUIERDA → DERECHA
+         * ESPEJO
          */
 
         if (direction === 0) {
@@ -61,11 +55,14 @@
             endX = width + margin;
             endY = random(0, height);
 
+            flip = true;
+
         }
 
 
         /*
          * DERECHA → IZQUIERDA
+         * ORIGINAL
          */
 
         else if (direction === 1) {
@@ -75,6 +72,8 @@
 
             endX = -margin;
             endY = random(0, height);
+
+            flip = false;
 
         }
 
@@ -91,6 +90,8 @@
             endX = random(0, width);
             endY = height + margin;
 
+            flip = false;
+
         }
 
 
@@ -106,16 +107,16 @@
             endX = random(0, width);
             endY = -margin;
 
+            flip = false;
+
         }
 
-
-        /*
-         * Rotación fija.
-         */
 
         const fixedRotation = 90;
 
         const duration = random(7, 12);
+
+        const scaleX = flip ? -1 : 1;
 
 
         /*
@@ -125,13 +126,8 @@
         bee.style.transition = 'none';
 
         bee.style.transform =
-            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg)`;
+            `translate(${startX}px, ${startY}px) rotate(${fixedRotation}deg) scaleX(${scaleX})`;
 
-
-        /*
-         * Forzamos al navegador a registrar
-         * la posición inicial.
-         */
 
         bee.offsetHeight;
 
@@ -144,11 +140,11 @@
             `transform ${duration}s linear`;
 
         bee.style.transform =
-            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg)`;
+            `translate(${endX}px, ${endY}px) rotate(${fixedRotation}deg) scaleX(${scaleX})`;
 
 
         /*
-         * SIGUIENTE VUELO
+         * FINAL DEL VUELO
          */
 
         const onTransitionEnd = (event) => {
@@ -180,7 +176,7 @@
 
 
     /*
-     * PRIMER VUELO
+     * Primer vuelo.
      */
 
     setTimeout(() => {
@@ -188,6 +184,7 @@
         flyBee();
 
     }, 2000);
+
 
 })();
 ```
