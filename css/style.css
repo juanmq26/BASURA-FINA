@@ -1570,3 +1570,28 @@ body {
     stroke: #EF73B6;
     stroke-width: 4;
 }
+/* =========================================
+   MOSCA — HEADER
+========================================= */
+
+.header-fly {
+    position: fixed;
+
+    top: 70px;
+    left: 145px;
+
+    width: 55px;
+    height: auto;
+
+    z-index: 100;
+
+    cursor: grab;
+
+    user-select: none;
+
+    touch-action: none;
+}
+
+.header-fly:active {
+    cursor: grabbing;
+}
