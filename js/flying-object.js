@@ -1,3 +1,4 @@
+```js
 (() => {
 
     const container = document.querySelector('.flying-object');
@@ -6,7 +7,7 @@
 
     const bee = document.createElement('img');
 
-    bee.src = 'https://github.com/juanmq26/BASURA-FINA/blob/main/images/ABEJA01_FLY_MIRROR.png?raw=true';
+    bee.src = 'images/ABEJA01_FLY.png';
     bee.className = 'flying-bee';
     bee.alt = '';
 
@@ -23,21 +24,9 @@
         const width = window.innerWidth;
         const height = window.innerHeight;
 
-        /*
-         * Margen suficiente para que la abeja
-         * quede completamente fuera de la pantalla
-         * al empezar y terminar.
-         */
         const beeSize = 90;
         const margin = beeSize * 2;
 
-
-        /*
-         * Elegimos aleatoriamente uno de los cuatro
-         * sentidos principales.
-         *
-         * Todos los vuelos tienen componente diagonal.
-         */
 
         const direction = Math.floor(random(0, 4));
 
@@ -49,6 +38,7 @@
 
         /*
          * IZQUIERDA → DERECHA
+         * Usamos la imagen espejada.
          */
 
         if (direction === 0) {
@@ -59,11 +49,15 @@
             endX = width + margin;
             endY = random(0, height);
 
+            bee.src =
+                'https://github.com/juanmq26/BASURA-FINA/blob/main/images/ABEJA01_FLY_MIRROR.png?raw=true';
+
         }
 
 
         /*
          * DERECHA → IZQUIERDA
+         * Usamos la imagen original.
          */
 
         else if (direction === 1) {
@@ -73,6 +67,8 @@
 
             endX = -margin;
             endY = random(0, height);
+
+            bee.src = 'images/ABEJA01_FLY.png';
 
         }
 
@@ -89,6 +85,8 @@
             endX = random(0, width);
             endY = height + margin;
 
+            bee.src = 'images/ABEJA01_FLY.png';
+
         }
 
 
@@ -104,18 +102,13 @@
             endX = random(0, width);
             endY = -margin;
 
+            bee.src = 'images/ABEJA01_FLY.png';
+
         }
 
 
         /*
          * ORIENTACIÓN FIJA
-         *
-         * La abeja NO gira siguiendo la trayectoria.
-         *
-         * 0   = orientación original
-         * 90  = giro 90º
-         * 180 = giro 180º
-         * 270 = giro 270º
          */
 
         const fixedRotation = 0;
@@ -123,8 +116,6 @@
 
         /*
          * Duración del vuelo.
-         *
-         * Menor número = más rápida.
          */
 
         const duration = random(7, 12);
@@ -143,7 +134,7 @@
 
         /*
          * Forzamos al navegador a aplicar
-         * la posición inicial antes de empezar.
+         * la posición inicial.
          */
 
         bee.offsetHeight;
@@ -162,9 +153,6 @@
 
         /*
          * Esperamos al final REAL de la transición.
-         *
-         * Esto es más fiable que usar un setTimeout
-         * exactamente igual a la duración.
          */
 
         const onTransitionEnd = (event) => {
@@ -177,10 +165,6 @@
                 onTransitionEnd
             );
 
-
-            /*
-             * Pausa aleatoria antes del siguiente vuelo.
-             */
 
             bee.style.transition = 'none';
 
@@ -203,9 +187,6 @@
 
     /*
      * Primer vuelo.
-     *
-     * Esperamos 2 segundos antes de que
-     * aparezca la primera abeja.
      */
 
     setTimeout(() => {
@@ -216,3 +197,4 @@
 
 
 })();
+```
