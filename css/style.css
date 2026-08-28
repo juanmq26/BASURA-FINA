@@ -1521,10 +1521,10 @@ body {
 .hand-arrow {
     display: inline-flex;
 
-    width: 45px;
-    height: 30px;
+    width: 52px;
+    height: 36px;
 
-    margin: 0 8px;
+    margin: 0 5px;
 
     vertical-align: middle;
 }
