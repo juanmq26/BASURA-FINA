@@ -6,7 +6,7 @@
 
     const bee = document.createElement('img');
 
-    bee.src = 'images/ABEJA01_FLY.png';
+    bee.src = 'https://github.com/juanmq26/BASURA-FINA/blob/main/images/ABEJA01_FLY_MIRROR.png?raw=true';
     bee.className = 'flying-bee';
     bee.alt = '';
 
