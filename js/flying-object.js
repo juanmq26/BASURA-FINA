@@ -1,5 +1,5 @@
 ```js
-document.addEventListener('DOMContentLoaded', () => {
+(() => {
 
     const container = document.querySelector('.flying-object');
 
@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const beeSize = 90;
         const margin = beeSize * 2;
-
 
         const direction = Math.floor(random(0, 4));
 
@@ -126,13 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /*
-     * Primer vuelo.
-     *
-     * Empieza inmediatamente.
-     */
+    setTimeout(() => {
 
-    flyBee();
+        flyBee();
 
-});
+    }, 2000);
+
+})();
 ```
