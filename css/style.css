@@ -844,3 +844,161 @@ body {
 .people-page .people-instructions {
     margin-top: 250px !important;
 }
+/* =========================================
+   DRAWING MODAL
+========================================= */
+
+.drawing-modal {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(23, 31, 93, 0.35);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+
+    z-index: 1000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+.drawing-modal.is-open {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* CUADRO */
+
+.drawing-modal-box {
+    position: relative;
+
+    width: min(700px, 85vw);
+
+    max-height: 90vh;
+
+    background: #ffffff;
+
+    padding: 45px 45px 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* X */
+
+.drawing-modal-close {
+    position: absolute;
+
+    top: 8px;
+    left: 12px;
+
+    border: none;
+
+    background: none;
+
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 32px;
+
+    line-height: 1;
+
+    font-weight: 550;
+
+    cursor: pointer;
+
+    padding: 0;
+}
+
+
+/* DIBUJO */
+
+.drawing-modal-box img {
+    display: block;
+
+    width: auto;
+
+    max-width: 100%;
+
+    max-height: 65vh;
+
+    object-fit: contain;
+}
+
+
+/* DESCARGAS */
+
+.drawing-modal-downloads {
+    display: flex;
+
+    gap: 25px;
+
+    margin-top: 20px;
+}
+
+
+.drawing-modal-downloads a {
+    color: #ef73b6;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    font-weight: 550;
+
+    text-decoration: none;
+}
+
+
+.drawing-modal-downloads a:hover {
+    text-decoration: underline;
+}
+
+
+/* TEXTO */
+
+.drawing-modal-info {
+    margin: 12px 0 0;
+
+    color: #171f5d;
+
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.2;
+
+    font-weight: 550;
+
+    text-align: center;
+}
