@@ -1615,14 +1615,14 @@ body {
 .moving-worm {
     position: fixed;
 
-    bottom: 4;
+    bottom: 0;
     left: -100px;
 
     width: 150px;
 
     z-index: 20;
 
-    animation: worm-crawl 32s linear infinite;
+    animation: none;
 }
 
 
